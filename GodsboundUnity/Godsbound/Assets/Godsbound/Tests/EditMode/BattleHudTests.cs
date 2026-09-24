@@ -231,9 +231,16 @@ namespace Godsbound.Tests
         public void EveryHexRoundTripsAndControlBandsAreExcluded(int width, int height)
         {
             var go = new GameObject("CameraTest");
+            // Render to a texture of the size under test. Without one, an editor camera's pixelRect
+            // is clamped to the Game view, so this test quietly measured the editor window instead
+            // of the resolution named in the TestCase — and failed at 1080x1920 whenever someone
+            // set the Game view to the phone size the game is actually designed for.
+            RenderTexture target = null;
             try
             {
+                target = new RenderTexture(width, height, 0);
                 var cam = go.AddComponent<Camera>(); cam.orthographic = true;
+                cam.targetTexture = target;
                 cam.pixelRect = new Rect(0, 0, width, height);
                 var framing = BoardViewport.Frame(BoardWorld.BoardBounds(BoardWorld.UnitLayout()), (float)width / height,
                     BoardViewport.DefaultTopFraction, BoardViewport.DefaultBottomFraction);
@@ -251,7 +258,11 @@ namespace Godsbound.Tests
                 Assert.That(band.height, Is.EqualTo(height * BoardViewport.DefaultBottomFraction));
                 Assert.That(band.yMax, Is.EqualTo(height).Within(0.001));
             }
-            finally { UnityEngine.Object.DestroyImmediate(go); }
+            finally
+            {
+                UnityEngine.Object.DestroyImmediate(go);
+                if (target != null) UnityEngine.Object.DestroyImmediate(target);
+            }
         }
     }
 }

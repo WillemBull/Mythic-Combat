@@ -25,6 +25,13 @@ namespace Godsbound.Presentation
         private BuildingsView buildings;
         private UnitsView units;
         private DamageNumbers hits;
+
+        /// <summary>
+        /// The tutorial callout queue (U36). Ticked here, drawn by the HUD. Constructed OFF and with
+        /// no settings read: a field initializer runs inside the MonoBehaviour constructor, during
+        /// deserialization, where touching PlayerPrefs is not allowed. NewMatch reads the toggle.
+        /// </summary>
+        public TutorialHints Hints { get; } = new TutorialHints(enabled: false);
         private float lastAspect;
         private bool aiEnabled;
 
@@ -104,6 +111,10 @@ namespace Godsbound.Presentation
             // Re-bound on every reset: the old subscription is dropped and the board clears of
             // numbers left over from the match just finished.
             if (hits != null) hits.Bind(State);
+            // A restart re-runs the tutorial from the top, and picks up the toggle if it changed
+            // while the player was in the menu.
+            Hints.Enabled = Godsbound.Data.GameSettings.Tutorial;
+            Hints.Reset();
             FrameCamera();
         }
         private void OnPowerCast(int side, string key, Hex at)
@@ -138,6 +149,8 @@ namespace Godsbound.Presentation
             if (buildings != null) buildings.Sync();
             if (units != null) units.Sync();
             if (hits != null) hits.Sync();
+            // After the step, so a hint's clock is the match's own: a paused match pauses the hints.
+            Hints.Tick(State.Elapsed);
             if (board != null) board.SyncTerrain();
             GetComponent<PowerFx>()?.Tick(dt);
         }

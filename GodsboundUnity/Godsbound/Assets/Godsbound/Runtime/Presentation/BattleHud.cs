@@ -300,6 +300,11 @@ namespace Godsbound.Presentation
             else GUI.Label(layout.Hint, hint, text);
 
             var evt = Event.current;
+            // Before the cards and the board see it: a player reaching to dismiss a hint is not
+            // trying to deploy underneath it. The callout itself is drawn at the end, on top.
+            if (TutorialRect(width, height, bottom, out var callout, out _) &&
+                evt.type == EventType.MouseDown && evt.button == 0 && callout.Contains(evt.mousePosition))
+            { controller.Hints.Dismiss(); evt.Use(); }
             pointerControl = GUIUtility.GetControlID(FocusType.Passive);
             if (draft != null && (!state.Live || controller.Paused || evt.type == EventType.Ignore ||
                 evt.type == EventType.KeyDown && evt.keyCode == KeyCode.Escape)) Cancel();
@@ -370,8 +375,39 @@ namespace Godsbound.Presentation
             }
             if (state.Objectives.Resolved)
                 GUI.Box(new Rect(45, height * 0.42f, width - 90, 70), state.Objectives.Result.Value.Outcome + "\nRestart to play again.", heading);
+            DrawTutorialCallout(width, height, bottom);
             GUI.matrix = oldMatrix;
         }
+        /// <summary>
+        /// Where roadmap 7.3's callout sits, in the HUD's design space: just above the bar, or under
+        /// the top band over the board. False when there is nothing to show.
+        /// </summary>
+        public bool TutorialRect(float width, float height, Rect bottom, out Rect rect, out string message)
+        {
+            rect = default; message = null;
+            var current = controller?.Hints?.Current;
+            if (current == null) return false;
+            const float h = 44f, pad = 14f;
+            float y = current.Value.Where == TutorialHints.Anchor.Bar
+                ? bottom.y - h - 6f
+                : height * BoardViewport.DefaultTopFraction + 12f;
+            rect = new Rect(pad, y, width - pad * 2f, h);
+            message = current.Value.Text;
+            return true;
+        }
+
+        /// <summary>Drawn last, so nothing else paints over the one thing the player is meant to read.</summary>
+        private void DrawTutorialCallout(float width, float height, Rect bottom)
+        {
+            if (!TutorialRect(width, height, bottom, out var rect, out var message)) return;
+            var old = GUI.color;
+            GUI.color = new Color(0.08f, 0.09f, 0.12f, 0.92f);
+            GUI.Box(rect, GUIContent.none);
+            GUI.color = old;
+            GUI.Label(new Rect(rect.x + 8f, rect.y, rect.width - 34f, rect.height), message, text);
+            GUI.Label(new Rect(rect.xMax - 26f, rect.y, 20f, rect.height), "x", text);
+        }
+
         private void DrawGodTiles(MatchState state, Rect row, Event evt)
         {
             var gods = state.Gods[0].Selected;

@@ -110,6 +110,10 @@ namespace Godsbound.Presentation.Setup
                 GUI.enabled = true;
                 GUILayout.EndHorizontal();
             }
+            // Roadmap 7.3's switch. Read and written straight through, so a match started from here
+            // picks up the change without anything having to remember to pass it along.
+            bool tutorial = GUILayout.Toggle(Godsbound.Data.GameSettings.Tutorial, " Tutorial hints");
+            if (tutorial != Godsbound.Data.GameSettings.Tutorial) Godsbound.Data.GameSettings.Tutorial = tutorial;
         }
 
         private void DrawFaction()
