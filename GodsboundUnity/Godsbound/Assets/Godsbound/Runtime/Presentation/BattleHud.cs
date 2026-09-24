@@ -34,7 +34,17 @@ namespace Godsbound.Presentation
     /// <summary>Local, dependency-free mouse/touch controls; all gameplay commands go to Core.</summary>
     public sealed class BattleHud : MonoBehaviour
     {
-        public const float HintHeight = 30f, GodRowHeight = 30f, RowGap = 4f, EdgePad = 8f;
+        // The band is fixed at 153 design px and every pixel is spoken for:
+        // 3 + Hint 26 + 4 + Cards 68 + 4 + Gods 44 + 4. The god row grew to a thumb-sized 44 (U37)
+        // and the four pixels came out of the hint row, which holds one line of text, rather than
+        // out of the cards — the browser's .card{min-height:68px} is a floor, not a preference.
+        public const float HintHeight = 26f, GodRowHeight = 44f, RowGap = 4f, EdgePad = 8f;
+
+        /// <summary>
+        /// The smallest a control may be and still be hit reliably with a thumb: 44 design px, which
+        /// is Apple's 44pt and Google's 48dp rounded to the frame this HUD is laid out in (U37).
+        /// </summary>
+        public const float MinTouch = 44f;
         private MatchController controller;
         private DeploymentDraft draft;
         private readonly GodTapFlow godTaps = new GodTapFlow(0);
@@ -251,8 +261,88 @@ namespace Godsbound.Presentation
             if (!picked.HasValue) return false;
             hex = picked.Value; return true;
         }
-        public static Rect BottomBand(float width, float height) =>
-            new Rect(0, height * (1f - BoardViewport.DefaultBottomFraction), width, height * BoardViewport.DefaultBottomFraction);
+        public static Rect BottomBand(float width, float height) => BottomBand(width, height, default);
+
+        /// <summary>
+        /// The bar's CONTENT band, lifted clear of the home indicator. The painted backdrop still
+        /// runs to the bottom of the glass (<see cref="BottomBackdrop"/>) — content respects the safe
+        /// area, background fills behind it, which is how a phone UI is supposed to look (U37).
+        /// </summary>
+        public static Rect BottomBand(float width, float height, SafeInsets safe)
+        {
+            float bandHeight = height * BoardViewport.DefaultBottomFraction;
+            return new Rect(safe.Left, height - safe.Bottom - bandHeight,
+                            width - safe.Left - safe.Right, bandHeight);
+        }
+
+        /// <summary>The painted area behind the bottom bar: the band plus the inset below it.</summary>
+        public static Rect BottomBackdrop(float width, float height, SafeInsets safe)
+        {
+            var band = BottomBand(width, height, safe);
+            return new Rect(0, band.y, width, height - band.y);
+        }
+
+        /// <summary>The top bar's content rect, pushed below a notch.</summary>
+        public static Rect TopBand(float width, float height, SafeInsets safe) =>
+            new Rect(safe.Left, safe.Top, width - safe.Left - safe.Right,
+                     height * BoardViewport.DefaultTopFraction);
+
+        /// <summary>
+        /// Screen-edge exclusions — notch, home indicator, rounded corners — in the HUD's design
+        /// space rather than device pixels.
+        /// </summary>
+        /// <remarks>
+        /// <c>Screen.safeArea</c> is in pixels with the origin at the BOTTOM left; IMGUI lays out from
+        /// the TOP left. Getting that flip wrong pushes the bar into the notch on exactly the devices
+        /// it was meant to protect, so the conversion lives here, alone, and is tested.
+        /// </remarks>
+        public readonly struct SafeInsets
+        {
+            public readonly float Top, Bottom, Left, Right;
+            public SafeInsets(float top, float bottom, float left, float right)
+            { Top = top; Bottom = bottom; Left = left; Right = right; }
+
+            public static SafeInsets From(Rect safeArea, float screenWidth, float screenHeight, float scale)
+            {
+                if (scale <= 0f || screenWidth <= 0f || screenHeight <= 0f) return default;
+                // A device that reports nothing useful gets no insets rather than nonsense ones.
+                if (safeArea.width <= 0f || safeArea.height <= 0f) return default;
+                return new SafeInsets(
+                    Mathf.Max(0f, screenHeight - safeArea.yMax) / scale,
+                    Mathf.Max(0f, safeArea.yMin) / scale,
+                    Mathf.Max(0f, safeArea.xMin) / scale,
+                    Mathf.Max(0f, screenWidth - safeArea.xMax) / scale);
+            }
+        }
+
+        /// <summary>Where the top bar's own controls sit. Pure, so the touch sizes can be tested.</summary>
+        public readonly struct TopBarLayout
+        {
+            public readonly Rect Title, Resources, Action, Status, Restart;
+            public TopBarLayout(Rect title, Rect resources, Rect action, Rect status, Rect restart)
+            { Title = title; Resources = resources; Action = action; Status = status; Restart = restart; }
+        }
+
+        /// <summary>
+        /// Two rows inside the top band: a thin line of text, then full-height buttons. The browser
+        /// put its buttons on the same line as the text, which at this size left them 20px tall —
+        /// unhittable with a thumb, and the reason this step exists (U37).
+        /// </summary>
+        public static TopBarLayout TopBar(Rect band)
+        {
+            float buttons = Mathf.Max(MinTouch, band.height * 0.6f);
+            float textHeight = Mathf.Max(0f, band.height - buttons - 1f);
+            float y = band.y + textHeight + 1f;
+            float half = (band.width - EdgePad * 2f) * 0.5f;
+            const float buttonWidth = 88f;
+            return new TopBarLayout(
+                new Rect(band.x + EdgePad, band.y, half, textHeight),
+                new Rect(band.x + EdgePad + half, band.y, half, textHeight),
+                new Rect(band.x + EdgePad, y, buttonWidth, buttons),
+                new Rect(band.x + EdgePad + buttonWidth + 6f, y,
+                         band.width - EdgePad * 2f - buttonWidth * 2f - 12f, buttons),
+                new Rect(band.xMax - EdgePad - buttonWidth, y, buttonWidth, buttons));
+        }
         public static float HudScale(float width, float height) =>
             Mathf.Min(width / BoardViewport.DesignWidthPx, height / BoardViewport.DesignHeightPx);
         private void OnGUI()
@@ -269,24 +359,27 @@ namespace Godsbound.Presentation
             float scale = HudScale(Screen.width, Screen.height), width = Screen.width / scale, height = Screen.height / scale;
             var oldMatrix = GUI.matrix;
             GUI.matrix = Matrix4x4.Scale(new Vector3(scale, scale, 1));
-            var bottom = BottomBand(width, height);
+            var safe = SafeInsets.From(Screen.safeArea, Screen.width, Screen.height, scale);
+            var bottom = BottomBand(width, height, safe);
             var layout = Layout(bottom);
-            float topHeight = height * BoardViewport.DefaultTopFraction;
-            GUI.Box(new Rect(0, 0, width, topHeight), GUIContent.none);
-            GUI.Box(bottom, GUIContent.none);
+            var top = TopBand(width, height, safe);
+            var bar = TopBar(top);
+            // Backdrops run under the notch and the home indicator; the controls do not.
+            GUI.Box(new Rect(0, 0, width, top.yMax), GUIContent.none);
+            GUI.Box(BottomBackdrop(width, height, safe), GUIContent.none);
             int seconds = Mathf.CeilToInt(state.Objectives.Clock.Remaining);
-            GUI.Label(new Rect(8, 0, width - 16, topHeight * 0.34f), "GODSBOUND   " + seconds / 60 + ":" + (seconds % 60).ToString("00"), heading);
-            GUI.Label(new Rect(8, topHeight * 0.34f, width - 16, topHeight * 0.30f), $"Food {state.Resources[0].Food:0}   Favor {state.Resources[0].Favor:0}", text);
+            GUI.Label(bar.Title, "GODSBOUND   " + seconds / 60 + ":" + (seconds % 60).ToString("00"), heading);
+            GUI.Label(bar.Resources, $"Food {state.Resources[0].Food:0}   Favor {state.Resources[0].Favor:0}", text);
             if (state.Phase == MatchPhase.Setup)
             {
-                if (GUI.Button(new Rect(8, topHeight * 0.65f, 88, topHeight * 0.33f), "Start battle")) controller.Begin();
+                if (GUI.Button(bar.Action, "Start battle")) controller.Begin();
             }
-            else if (!state.Objectives.Resolved && GUI.Button(new Rect(8, topHeight * 0.65f, 88, topHeight * 0.33f), controller.Paused ? "Resume" : "Pause"))
+            else if (!state.Objectives.Resolved && GUI.Button(bar.Action, controller.Paused ? "Resume" : "Pause"))
                 controller.SetPaused(!controller.Paused);
-            if (GUI.Button(new Rect(width - 96, topHeight * 0.65f, 88, topHeight * 0.33f), "Restart")) { controller.NewMatch(); GUI.matrix = oldMatrix; return; }
+            if (GUI.Button(bar.Restart, "Restart")) { controller.NewMatch(); GUI.matrix = oldMatrix; return; }
             string status = state.Objectives.Resolved ? state.Objectives.Result.Value.Outcome.ToString() : controller.Paused ? "Paused" :
                 state.Ai != null ? "China - " + state.Ai.Choice.Profile.style : "Training battlefield";
-            GUI.Label(new Rect(98, topHeight * 0.65f, width - 196, topHeight * 0.33f), status, text);
+            GUI.Label(bar.Status, status, text);
             var enemyGodsToPick = aim.IsArmed && state.Powers.Definition(aim.Armed)?.Aim == PowerTarget.EnemyGod
                 ? PowerAim.LockableEnemyGods(state).ToList() : null;
             if (enemyGodsToPick != null && enemyGodsToPick.Count > 0)
@@ -302,7 +395,7 @@ namespace Godsbound.Presentation
             var evt = Event.current;
             // Before the cards and the board see it: a player reaching to dismiss a hint is not
             // trying to deploy underneath it. The callout itself is drawn at the end, on top.
-            if (TutorialRect(width, height, bottom, out var callout, out _) &&
+            if (TutorialRect(top, bottom, out var callout, out _) &&
                 evt.type == EventType.MouseDown && evt.button == 0 && callout.Contains(evt.mousePosition))
             { controller.Hints.Dismiss(); evt.Use(); }
             pointerControl = GUIUtility.GetControlID(FocusType.Passive);
@@ -375,31 +468,31 @@ namespace Godsbound.Presentation
             }
             if (state.Objectives.Resolved)
                 GUI.Box(new Rect(45, height * 0.42f, width - 90, 70), state.Objectives.Result.Value.Outcome + "\nRestart to play again.", heading);
-            DrawTutorialCallout(width, height, bottom);
+            DrawTutorialCallout(top, bottom);
             GUI.matrix = oldMatrix;
         }
         /// <summary>
         /// Where roadmap 7.3's callout sits, in the HUD's design space: just above the bar, or under
         /// the top band over the board. False when there is nothing to show.
         /// </summary>
-        public bool TutorialRect(float width, float height, Rect bottom, out Rect rect, out string message)
+        public bool TutorialRect(Rect top, Rect bottom, out Rect rect, out string message)
         {
             rect = default; message = null;
             var current = controller?.Hints?.Current;
             if (current == null) return false;
             const float h = 44f, pad = 14f;
-            float y = current.Value.Where == TutorialHints.Anchor.Bar
-                ? bottom.y - h - 6f
-                : height * BoardViewport.DefaultTopFraction + 12f;
-            rect = new Rect(pad, y, width - pad * 2f, h);
+            // Bar hints sit just above the cards they are about; arena hints hang under the top bar,
+            // over the board, where the thing being explained actually is.
+            float y = current.Value.Where == TutorialHints.Anchor.Bar ? bottom.y - h - 6f : top.yMax + 12f;
+            rect = new Rect(top.x + pad, y, top.width - pad * 2f, h);
             message = current.Value.Text;
             return true;
         }
 
         /// <summary>Drawn last, so nothing else paints over the one thing the player is meant to read.</summary>
-        private void DrawTutorialCallout(float width, float height, Rect bottom)
+        private void DrawTutorialCallout(Rect top, Rect bottom)
         {
-            if (!TutorialRect(width, height, bottom, out var rect, out var message)) return;
+            if (!TutorialRect(top, bottom, out var rect, out var message)) return;
             var old = GUI.color;
             GUI.color = new Color(0.08f, 0.09f, 0.12f, 0.92f);
             GUI.Box(rect, GUIContent.none);
