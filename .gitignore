@@ -1,0 +1,37 @@
+# Agent and editor scratch
+.claude/settings.local.json
+tmp/
+~$*
+__pycache__/
+
+# ---- Unity (GodsboundUnity/) ----
+# Regenerable editor caches. Never commit these: Library alone is tens of
+# thousands of files and Unity rebuilds all of it from Assets + ProjectSettings.
+GodsboundUnity/**/[Ll]ibrary/
+GodsboundUnity/**/[Tt]emp/
+GodsboundUnity/**/[Oo]bj/
+GodsboundUnity/**/[Bb]uild/
+GodsboundUnity/**/[Bb]uilds/
+GodsboundUnity/**/[Ll]ogs/
+GodsboundUnity/**/[Uu]ser[Ss]ettings/
+GodsboundUnity/**/[Mm]emoryCaptures/
+GodsboundUnity/**/[Rr]ecordings/
+GodsboundUnity/**/Assets/AssetStoreTools*
+GodsboundUnity/**/.vs/
+GodsboundUnity/**/.vsconfig
+GodsboundUnity/**/*.csproj
+GodsboundUnity/**/*.sln
+GodsboundUnity/**/*.unityproj
+GodsboundUnity/**/*.pidb
+GodsboundUnity/**/*.booproj
+GodsboundUnity/**/*.svd
+GodsboundUnity/**/*.userprefs
+GodsboundUnity/**/*.apk
+GodsboundUnity/**/*.aab
+GodsboundUnity/**/*.unitypackage
+GodsboundUnity/**/crashlytics-build.properties
+sysinfo.txt
+
+# Unity crash-recovery scene backups (identical to the committed scene)
+GodsboundUnity/Godsbound/Assets/_Recovery/
+GodsboundUnity/Godsbound/Assets/_Recovery.meta

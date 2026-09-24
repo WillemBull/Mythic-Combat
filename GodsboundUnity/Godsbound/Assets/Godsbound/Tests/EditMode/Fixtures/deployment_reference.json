@@ -1,0 +1,446 @@
+{
+  "source": "godsbound_beta.html",
+  "cases": [
+    {
+      "name": "drag-0",
+      "source": [
+        {
+          "c": 6,
+          "r": 9
+        },
+        {
+          "c": 7,
+          "r": 9
+        }
+      ],
+      "moves": [
+        {
+          "c": 7,
+          "r": 8
+        },
+        {
+          "c": 7,
+          "r": 7
+        },
+        {
+          "c": 7,
+          "r": 6
+        },
+        {
+          "c": 7,
+          "r": 5
+        }
+      ],
+      "route": [
+        {
+          "c": 7,
+          "r": 8
+        },
+        {
+          "c": 7,
+          "r": 7
+        },
+        {
+          "c": 7,
+          "r": 6
+        },
+        {
+          "c": 7,
+          "r": 5
+        }
+      ]
+    },
+    {
+      "name": "drag-1",
+      "source": [
+        {
+          "c": 6,
+          "r": 9
+        },
+        {
+          "c": 7,
+          "r": 9
+        }
+      ],
+      "moves": [
+        {
+          "c": 7,
+          "r": 8
+        },
+        {
+          "c": 7,
+          "r": 7
+        },
+        {
+          "c": 7,
+          "r": 6
+        },
+        {
+          "c": 7,
+          "r": 8
+        }
+      ],
+      "route": [
+        {
+          "c": 7,
+          "r": 8
+        }
+      ]
+    },
+    {
+      "name": "drag-2",
+      "source": [
+        {
+          "c": 6,
+          "r": 9
+        },
+        {
+          "c": 7,
+          "r": 9
+        }
+      ],
+      "moves": [
+        {
+          "c": 7,
+          "r": 7
+        }
+      ],
+      "route": [
+        {
+          "c": 6,
+          "r": 8
+        },
+        {
+          "c": 7,
+          "r": 7
+        }
+      ]
+    },
+    {
+      "name": "drag-3",
+      "source": [
+        {
+          "c": 6,
+          "r": 9
+        },
+        {
+          "c": 7,
+          "r": 9
+        }
+      ],
+      "moves": [
+        {
+          "c": 7,
+          "r": 8
+        },
+        {
+          "c": 7,
+          "r": 6
+        }
+      ],
+      "route": [
+        {
+          "c": 7,
+          "r": 8
+        },
+        {
+          "c": 7,
+          "r": 7
+        },
+        {
+          "c": 7,
+          "r": 6
+        }
+      ]
+    },
+    {
+      "name": "drag-4",
+      "source": [
+        {
+          "c": 6,
+          "r": 9
+        },
+        {
+          "c": 7,
+          "r": 9
+        }
+      ],
+      "moves": [
+        {
+          "c": 7,
+          "r": 8
+        },
+        {
+          "c": 0,
+          "r": 0
+        }
+      ],
+      "route": [
+        {
+          "c": 7,
+          "r": 8
+        }
+      ]
+    },
+    {
+      "name": "drag-5",
+      "source": [
+        {
+          "c": 6,
+          "r": 9
+        },
+        {
+          "c": 7,
+          "r": 9
+        }
+      ],
+      "moves": [
+        {
+          "c": 7,
+          "r": 8
+        },
+        {
+          "c": 6,
+          "r": 9
+        }
+      ],
+      "route": []
+    }
+  ],
+  "rotations": [
+    {
+      "handSize": 6,
+      "start": [
+        "spear",
+        "archer",
+        "axe",
+        "elephant",
+        "bata",
+        "doomedprince"
+      ],
+      "used": [
+        "spear",
+        "spear",
+        "axe",
+        "archer",
+        "elephant",
+        "spear"
+      ],
+      "after": [
+        "archer,axe,elephant,bata,doomedprince,spear",
+        "archer,axe,elephant,bata,doomedprince,spear",
+        "archer,elephant,bata,doomedprince,spear,axe",
+        "elephant,bata,doomedprince,spear,axe,archer",
+        "bata,doomedprince,spear,axe,archer,elephant",
+        "bata,doomedprince,axe,archer,elephant,spear"
+      ]
+    },
+    {
+      "handSize": 6,
+      "start": [
+        "spear",
+        "archer",
+        "axe",
+        "elephant",
+        "bata",
+        "doomedprince"
+      ],
+      "used": [
+        "elephant",
+        "bata",
+        "doomedprince",
+        "elephant"
+      ],
+      "after": [
+        "spear,archer,axe,bata,doomedprince,elephant",
+        "spear,archer,axe,doomedprince,elephant,bata",
+        "spear,archer,axe,elephant,bata,doomedprince",
+        "spear,archer,axe,bata,doomedprince,elephant"
+      ]
+    },
+    {
+      "handSize": 6,
+      "start": [
+        "spear",
+        "archer",
+        "axe",
+        "elephant",
+        "bata",
+        "doomedprince"
+      ],
+      "used": [
+        "doomedprince",
+        "spear",
+        "spear",
+        "archer",
+        "archer"
+      ],
+      "after": [
+        "spear,archer,axe,elephant,bata,doomedprince",
+        "archer,axe,elephant,bata,doomedprince,spear",
+        "archer,axe,elephant,bata,doomedprince,spear",
+        "axe,elephant,bata,doomedprince,spear,archer",
+        "axe,elephant,bata,doomedprince,spear,archer"
+      ]
+    },
+    {
+      "handSize": 6,
+      "start": [
+        "spear",
+        "archer",
+        "axe",
+        "elephant",
+        "bata",
+        "doomedprince",
+        "ammit"
+      ],
+      "used": [
+        "spear",
+        "doomedprince",
+        "archer",
+        "ammit",
+        "archer",
+        "axe"
+      ],
+      "after": [
+        "ammit,archer,axe,elephant,bata,doomedprince,spear",
+        "ammit,archer,axe,elephant,bata,spear,doomedprince",
+        "ammit,doomedprince,axe,elephant,bata,spear,archer",
+        "archer,doomedprince,axe,elephant,bata,spear,ammit",
+        "ammit,doomedprince,axe,elephant,bata,spear,archer",
+        "ammit,doomedprince,archer,elephant,bata,spear,axe"
+      ]
+    },
+    {
+      "handSize": 6,
+      "start": [
+        "spear",
+        "archer",
+        "axe",
+        "elephant",
+        "bata",
+        "doomedprince",
+        "ammit"
+      ],
+      "used": [
+        "elephant",
+        "ammit",
+        "elephant",
+        "ammit"
+      ],
+      "after": [
+        "spear,archer,axe,ammit,bata,doomedprince,elephant",
+        "spear,archer,axe,elephant,bata,doomedprince,ammit",
+        "spear,archer,axe,ammit,bata,doomedprince,elephant",
+        "spear,archer,axe,elephant,bata,doomedprince,ammit"
+      ]
+    },
+    {
+      "handSize": 6,
+      "start": [
+        "spear",
+        "archer",
+        "axe",
+        "elephant",
+        "bata",
+        "doomedprince",
+        "ammit"
+      ],
+      "used": [
+        "doomedprince",
+        "spear",
+        "ammit",
+        "doomedprince",
+        "spear"
+      ],
+      "after": [
+        "spear,archer,axe,elephant,bata,ammit,doomedprince",
+        "doomedprince,archer,axe,elephant,bata,ammit,spear",
+        "doomedprince,archer,axe,elephant,bata,spear,ammit",
+        "ammit,archer,axe,elephant,bata,spear,doomedprince",
+        "ammit,archer,axe,elephant,bata,doomedprince,spear"
+      ]
+    },
+    {
+      "handSize": 6,
+      "start": [
+        "spear",
+        "archer",
+        "axe",
+        "elephant",
+        "bata",
+        "doomedprince",
+        "ammit",
+        "scorpion"
+      ],
+      "used": [
+        "spear",
+        "doomedprince",
+        "archer",
+        "ammit",
+        "doomedprince",
+        "axe"
+      ],
+      "after": [
+        "ammit,archer,axe,elephant,bata,doomedprince,scorpion,spear",
+        "ammit,archer,axe,elephant,bata,scorpion,spear,doomedprince",
+        "ammit,spear,axe,elephant,bata,scorpion,doomedprince,archer",
+        "doomedprince,spear,axe,elephant,bata,scorpion,archer,ammit",
+        "archer,spear,axe,elephant,bata,scorpion,ammit,doomedprince",
+        "archer,spear,ammit,elephant,bata,scorpion,doomedprince,axe"
+      ]
+    },
+    {
+      "handSize": 6,
+      "start": [
+        "spear",
+        "archer",
+        "axe",
+        "elephant",
+        "bata",
+        "doomedprince",
+        "ammit",
+        "scorpion"
+      ],
+      "used": [
+        "elephant",
+        "ammit",
+        "scorpion",
+        "elephant"
+      ],
+      "after": [
+        "spear,archer,axe,ammit,bata,doomedprince,scorpion,elephant",
+        "spear,archer,axe,scorpion,bata,doomedprince,elephant,ammit",
+        "spear,archer,axe,elephant,bata,doomedprince,ammit,scorpion",
+        "spear,archer,axe,ammit,bata,doomedprince,scorpion,elephant"
+      ]
+    },
+    {
+      "handSize": 6,
+      "start": [
+        "spear",
+        "archer",
+        "axe",
+        "elephant",
+        "bata",
+        "doomedprince",
+        "ammit",
+        "scorpion"
+      ],
+      "used": [
+        "doomedprince",
+        "spear",
+        "ammit",
+        "scorpion",
+        "doomedprince"
+      ],
+      "after": [
+        "spear,archer,axe,elephant,bata,ammit,scorpion,doomedprince",
+        "scorpion,archer,axe,elephant,bata,ammit,doomedprince,spear",
+        "scorpion,archer,axe,elephant,bata,doomedprince,spear,ammit",
+        "spear,archer,axe,elephant,bata,doomedprince,ammit,scorpion",
+        "spear,archer,axe,elephant,bata,ammit,scorpion,doomedprince"
+      ]
+    }
+  ]
+}

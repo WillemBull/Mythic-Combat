@@ -1,0 +1,108 @@
+{
+  "source": "godsbound_beta.html",
+  "canvas": 3.6207,
+  "anchorX": 0.499,
+  "anchorY": 0.4975,
+  "healthGap": 0.3,
+  "healthWidth": 2.2,
+  "labelInset": 0.55,
+  "labelHeight": 0.5,
+  "art": [
+    {
+      "key": "bld_egypt_city",
+      "faction": "egypt",
+      "type": "city",
+      "source": "assets/sprites/egypt_city_front.png",
+      "resource": "BuildingArt/egypt_city",
+      "scale": 1
+    },
+    {
+      "key": "bld_egypt_temple",
+      "faction": "egypt",
+      "type": "temple",
+      "source": "assets/sprites/egypt_temple_front.png",
+      "resource": "BuildingArt/egypt_temple",
+      "scale": 0.911
+    },
+    {
+      "key": "bld_egypt_fortress",
+      "faction": "egypt",
+      "type": "fortress",
+      "source": "assets/sprites/egypt_fortress_front.png",
+      "resource": "BuildingArt/egypt_fortress",
+      "scale": 0.984
+    },
+    {
+      "key": "bld_china_city",
+      "faction": "china",
+      "type": "city",
+      "source": "assets/sprites/china_city_front.png",
+      "resource": "BuildingArt/china_city",
+      "scale": 1
+    },
+    {
+      "key": "bld_china_temple",
+      "faction": "china",
+      "type": "temple",
+      "source": "assets/sprites/china_temple_front.png",
+      "resource": "BuildingArt/china_temple",
+      "scale": 0.949
+    },
+    {
+      "key": "bld_china_fortress",
+      "faction": "china",
+      "type": "fortress",
+      "source": "assets/sprites/china_fortress_front.png",
+      "resource": "BuildingArt/china_fortress",
+      "scale": 1
+    },
+    {
+      "key": "bld_aztec_city",
+      "faction": "aztec",
+      "type": "city",
+      "source": "assets/sprites/aztec_city_front.png",
+      "resource": "BuildingArt/aztec_city",
+      "scale": 1
+    },
+    {
+      "key": "bld_aztec_temple",
+      "faction": "aztec",
+      "type": "temple",
+      "source": "assets/sprites/aztec_temple_front.png",
+      "resource": "BuildingArt/aztec_temple",
+      "scale": 0.902
+    },
+    {
+      "key": "bld_aztec_fortress",
+      "faction": "aztec",
+      "type": "fortress",
+      "source": "assets/sprites/aztec_fortress_front.png",
+      "resource": "BuildingArt/aztec_fortress",
+      "scale": 0.981
+    },
+    {
+      "key": "bld_greek_city",
+      "faction": "greek",
+      "type": "city",
+      "source": "assets/sprites/greek_city_front.png",
+      "resource": "BuildingArt/greek_city",
+      "scale": 1
+    },
+    {
+      "key": "bld_greek_temple",
+      "faction": "greek",
+      "type": "temple",
+      "source": "assets/sprites/greek_temple_front.png",
+      "resource": "BuildingArt/greek_temple",
+      "scale": 1
+    },
+    {
+      "key": "bld_greek_fortress",
+      "faction": "greek",
+      "type": "fortress",
+      "source": "assets/sprites/greek_fortress_front.png",
+      "resource": "BuildingArt/greek_fortress",
+      "scale": 0.92
+    }
+  ]
+}

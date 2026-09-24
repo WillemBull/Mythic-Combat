@@ -1,0 +1,1137 @@
+{
+  "source": "godsbound_beta.html",
+  "cases": [
+    {
+      "name": "nearest-footprint",
+      "units": [
+        {
+          "c": 6,
+          "r": 5,
+          "hp": 60
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "lowest-health",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 70
+        },
+        {
+          "c": 6,
+          "r": 5,
+          "hp": 25
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        70,
+        7
+      ],
+      "expectedDead": [
+        false,
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "stable-ties",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 25
+        },
+        {
+          "c": 6,
+          "r": 5,
+          "hp": 25
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        7,
+        25
+      ],
+      "expectedDead": [
+        false,
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "out-of-range",
+      "units": [
+        {
+          "c": 0,
+          "r": 0,
+          "hp": 10
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        10
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": -0.05,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "flying",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60,
+          "flying": true
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ally-only",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 10,
+          "ally": true
+        },
+        {
+          "c": 6,
+          "r": 5,
+          "hp": 60
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        10,
+        42
+      ],
+      "expectedDead": [
+        false,
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "friendly",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 10,
+          "friendly": true
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        10
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": -0.05,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "invulnerable",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 10,
+          "invuln": 20
+        },
+        {
+          "c": 6,
+          "r": 5,
+          "hp": 60
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        10,
+        42
+      ],
+      "expectedDead": [
+        false,
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "invulnerability-boundary",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60,
+          "invuln": 10
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "concealed-still-hit",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60,
+          "invisible": true
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "dead-unit",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 0
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        0
+      ],
+      "expectedDead": [
+        true
+      ],
+      "nextTimer": -0.05,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "dead-fortress",
+      "dead": true,
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "expectedHp": [
+        60
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 0,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "city-does-not-fire",
+      "type": "city",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "dead": false,
+      "expectedHp": [
+        60
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 0,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "waiting-cooldown",
+      "timer": 0.1,
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60
+        }
+      ],
+      "side": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        60
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 0.05,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cooldown-boundary",
+      "timer": 0.05,
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60
+        }
+      ],
+      "side": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "lethal",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 10
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        0
+      ],
+      "expectedDead": [
+        true
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 1,
+      "favor": [
+        7,
+        0
+      ]
+    },
+    {
+      "name": "lethal-does-not-revive",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 10,
+          "revives": true
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        0
+      ],
+      "expectedDead": [
+        true
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 1,
+      "favor": [
+        7,
+        0
+      ]
+    },
+    {
+      "name": "empty-ready-retry",
+      "timer": -5,
+      "units": [],
+      "side": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [],
+      "expectedDead": [],
+      "nextTimer": -5.05,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "occupied-building",
+      "units": [
+        {
+          "c": 4,
+          "r": 5,
+          "hp": 60
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "reserved-hex-not-position",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60,
+          "farPosition": true
+        }
+      ],
+      "side": 0,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "nearest-footprint",
+      "units": [
+        {
+          "c": 6,
+          "r": 5,
+          "hp": 60
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "lowest-health",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 70
+        },
+        {
+          "c": 6,
+          "r": 5,
+          "hp": 25
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        70,
+        7
+      ],
+      "expectedDead": [
+        false,
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "stable-ties",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 25
+        },
+        {
+          "c": 6,
+          "r": 5,
+          "hp": 25
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        7,
+        25
+      ],
+      "expectedDead": [
+        false,
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "out-of-range",
+      "units": [
+        {
+          "c": 0,
+          "r": 0,
+          "hp": 10
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        10
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": -0.05,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "flying",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60,
+          "flying": true
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ally-only",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 10,
+          "ally": true
+        },
+        {
+          "c": 6,
+          "r": 5,
+          "hp": 60
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        10,
+        42
+      ],
+      "expectedDead": [
+        false,
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "friendly",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 10,
+          "friendly": true
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        10
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": -0.05,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "invulnerable",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 10,
+          "invuln": 20
+        },
+        {
+          "c": 6,
+          "r": 5,
+          "hp": 60
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        10,
+        42
+      ],
+      "expectedDead": [
+        false,
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "invulnerability-boundary",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60,
+          "invuln": 10
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "concealed-still-hit",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60,
+          "invisible": true
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "dead-unit",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 0
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        0
+      ],
+      "expectedDead": [
+        true
+      ],
+      "nextTimer": -0.05,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "dead-fortress",
+      "dead": true,
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "expectedHp": [
+        60
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 0,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "city-does-not-fire",
+      "type": "city",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "dead": false,
+      "expectedHp": [
+        60
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 0,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "waiting-cooldown",
+      "timer": 0.1,
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60
+        }
+      ],
+      "side": 1,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        60
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 0.05,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cooldown-boundary",
+      "timer": 0.05,
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60
+        }
+      ],
+      "side": 1,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "lethal",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 10
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        0
+      ],
+      "expectedDead": [
+        true
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 1,
+      "favor": [
+        6,
+        1
+      ]
+    },
+    {
+      "name": "lethal-does-not-revive",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 10,
+          "revives": true
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        0
+      ],
+      "expectedDead": [
+        true
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 1,
+      "favor": [
+        6,
+        1
+      ]
+    },
+    {
+      "name": "empty-ready-retry",
+      "timer": -5,
+      "units": [],
+      "side": 1,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [],
+      "expectedDead": [],
+      "nextTimer": -5.05,
+      "shots": 0,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "occupied-building",
+      "units": [
+        {
+          "c": 4,
+          "r": 5,
+          "hp": 60
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "reserved-hex-not-position",
+      "units": [
+        {
+          "c": 4,
+          "r": 4,
+          "hp": 60,
+          "farPosition": true
+        }
+      ],
+      "side": 1,
+      "timer": 0,
+      "type": "fortress",
+      "dead": false,
+      "expectedHp": [
+        42
+      ],
+      "expectedDead": [
+        false
+      ],
+      "nextTimer": 1,
+      "shots": 1,
+      "humans": 0,
+      "favor": [
+        0,
+        0
+      ]
+    }
+  ]
+}

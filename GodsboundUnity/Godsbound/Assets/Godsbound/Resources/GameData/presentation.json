@@ -1,0 +1,1385 @@
+{
+  "source": "godsbound_beta.html",
+  "food": 0,
+  "favor": 0,
+  "aiFood": 0,
+  "aiFavor": 0,
+  "anchorDown": 0.42,
+  "handSize": 6,
+  "art": [
+    {
+      "key": "spear",
+      "side": 0,
+      "source": "assets/sprites/spear_idle_back.png",
+      "resource": "UnitArt/spear_0",
+      "height": 1.5972007999999998,
+      "mirror": false
+    },
+    {
+      "key": "spear",
+      "side": 1,
+      "source": "assets/sprites/spear_idle_front.png",
+      "resource": "UnitArt/spear_1",
+      "height": 1.7157607999999998,
+      "mirror": false
+    },
+    {
+      "key": "archer",
+      "side": 0,
+      "source": "assets/sprites/archer_back.png",
+      "resource": "UnitArt/archer_0",
+      "height": 3.0303936,
+      "mirror": false
+    },
+    {
+      "key": "archer",
+      "side": 1,
+      "source": "assets/sprites/archer_front.png",
+      "resource": "UnitArt/archer_1",
+      "height": 2.6924976,
+      "mirror": false
+    },
+    {
+      "key": "axe",
+      "side": 0,
+      "source": "assets/sprites/axe_back_mobile.png",
+      "resource": "UnitArt/axe_0",
+      "height": 2.2532327999999997,
+      "mirror": false
+    },
+    {
+      "key": "axe",
+      "side": 1,
+      "source": "assets/sprites/axe_front.png",
+      "resource": "UnitArt/axe_1",
+      "height": 2.3990615999999996,
+      "mirror": false
+    },
+    {
+      "key": "chariot",
+      "side": 0,
+      "source": "assets/sprites/chariot_back.png",
+      "resource": "UnitArt/chariot_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "chariot",
+      "side": 1,
+      "source": "assets/sprites/chariot_front.png",
+      "resource": "UnitArt/chariot_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "priest",
+      "side": 0,
+      "source": "assets/sprites/priest_back.png",
+      "resource": "UnitArt/priest_0",
+      "height": 2.0882368,
+      "mirror": false
+    },
+    {
+      "key": "priest",
+      "side": 1,
+      "source": "assets/sprites/priest_front.png",
+      "resource": "UnitArt/priest_1",
+      "height": 2.0309328,
+      "mirror": false
+    },
+    {
+      "key": "sinuhe",
+      "side": 0,
+      "source": "assets/sprites/sinuhe_back.png",
+      "resource": "UnitArt/sinuhe_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "sinuhe",
+      "side": 1,
+      "source": "assets/sprites/sinuhe_front.png",
+      "resource": "UnitArt/sinuhe_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "doomedprince",
+      "side": 0,
+      "source": "assets/sprites/doomedprince_back.png",
+      "resource": "UnitArt/doomedprince_0",
+      "height": 4.3501639999999995,
+      "mirror": false
+    },
+    {
+      "key": "doomedprince",
+      "side": 1,
+      "source": "assets/sprites/doomedprince_front.png",
+      "resource": "UnitArt/doomedprince_1",
+      "height": 3.8417391999999992,
+      "mirror": false
+    },
+    {
+      "key": "bata_tree",
+      "side": 0,
+      "source": "assets/sprites/bata_tree_back.png",
+      "resource": "UnitArt/bata_tree_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "bata_tree",
+      "side": 1,
+      "source": "assets/sprites/bata_tree_front.png",
+      "resource": "UnitArt/bata_tree_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "bata_reborn",
+      "side": 0,
+      "source": "assets/sprites/bata_reborn_back.png",
+      "resource": "UnitArt/bata_reborn_0",
+      "height": 2.6150384,
+      "mirror": false
+    },
+    {
+      "key": "bata_reborn",
+      "side": 1,
+      "source": "assets/sprites/bata_reborn_front.png",
+      "resource": "UnitArt/bata_reborn_1",
+      "height": 1.9192888,
+      "mirror": false
+    },
+    {
+      "key": "bata",
+      "side": 0,
+      "source": "assets/sprites/bata_back.png",
+      "resource": "UnitArt/bata_0",
+      "height": 2.2741784,
+      "mirror": false
+    },
+    {
+      "key": "bata",
+      "side": 1,
+      "source": "assets/sprites/bata_front.png",
+      "resource": "UnitArt/bata_1",
+      "height": 1.6689295999999998,
+      "mirror": false
+    },
+    {
+      "key": "sphinx",
+      "side": 0,
+      "source": "assets/sprites/sphinx_back.png",
+      "resource": "UnitArt/sphinx_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "sphinx",
+      "side": 1,
+      "source": "assets/sprites/sphinx_front.png",
+      "resource": "UnitArt/sphinx_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "slinger",
+      "side": 0,
+      "source": "assets/sprites/slinger_back_mobile.png",
+      "resource": "UnitArt/slinger_0",
+      "height": 2.4719759999999997,
+      "mirror": false
+    },
+    {
+      "key": "slinger",
+      "side": 1,
+      "source": "assets/sprites/slinger_front.png",
+      "resource": "UnitArt/slinger_1",
+      "height": 2.1042424,
+      "mirror": false
+    },
+    {
+      "key": "camel",
+      "side": 0,
+      "source": "assets/sprites/camel_back.png",
+      "resource": "UnitArt/camel_0",
+      "height": 3.3591999999999995,
+      "mirror": false
+    },
+    {
+      "key": "camel",
+      "side": 1,
+      "source": "assets/sprites/camel_front.png",
+      "resource": "UnitArt/camel_1",
+      "height": 3.3591999999999995,
+      "mirror": false
+    },
+    {
+      "key": "elephant",
+      "side": 0,
+      "source": "assets/sprites/elephant_back.png",
+      "resource": "UnitArt/elephant_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "elephant",
+      "side": 1,
+      "source": "assets/sprites/elephant_front.png",
+      "resource": "UnitArt/elephant_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "khopesh",
+      "side": 0,
+      "source": "assets/sprites/khopesh_back_mobile.png",
+      "resource": "UnitArt/khopesh_0",
+      "height": 2.3711999999999995,
+      "mirror": false
+    },
+    {
+      "key": "khopesh",
+      "side": 1,
+      "source": "assets/sprites/khopesh_front.png",
+      "resource": "UnitArt/khopesh_1",
+      "height": 3.8292903999999997,
+      "mirror": false
+    },
+    {
+      "key": "phoenix",
+      "side": 0,
+      "source": "assets/sprites/phoenix_back.png",
+      "resource": "UnitArt/phoenix_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "phoenix",
+      "side": 1,
+      "source": "assets/sprites/phoenix_front.png",
+      "resource": "UnitArt/phoenix_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "jackal",
+      "side": 0,
+      "source": "assets/sprites/jackal_back.png",
+      "resource": "UnitArt/jackal_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "jackal",
+      "side": 1,
+      "source": "assets/sprites/jackal_front.png",
+      "resource": "UnitArt/jackal_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "serpopard",
+      "side": 0,
+      "source": "assets/sprites/serpopard_back.png",
+      "resource": "UnitArt/serpopard_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "serpopard",
+      "side": 1,
+      "source": "assets/sprites/serpopard_front.png",
+      "resource": "UnitArt/serpopard_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "apis",
+      "side": 0,
+      "source": "assets/sprites/apis_back.png",
+      "resource": "UnitArt/apis_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "apis",
+      "side": 1,
+      "source": "assets/sprites/apis_front.png",
+      "resource": "UnitArt/apis_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "scorpion",
+      "side": 0,
+      "source": "assets/sprites/scorpion_back.png",
+      "resource": "UnitArt/scorpion_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "scorpion",
+      "side": 1,
+      "source": "assets/sprites/scorpion_front.png",
+      "resource": "UnitArt/scorpion_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "apep",
+      "side": 0,
+      "source": "assets/sprites/apep_back.png",
+      "resource": "UnitArt/apep_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "apep",
+      "side": 1,
+      "source": "assets/sprites/apep_front.png",
+      "resource": "UnitArt/apep_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "ammit",
+      "side": 0,
+      "source": "assets/sprites/ammit_back.png",
+      "resource": "UnitArt/ammit_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "ammit",
+      "side": 1,
+      "source": "assets/sprites/ammit_front.png",
+      "resource": "UnitArt/ammit_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "plaguebearer",
+      "side": 0,
+      "source": "assets/sprites/plaguebearer_back.png",
+      "resource": "UnitArt/plaguebearer_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "plaguebearer",
+      "side": 1,
+      "source": "assets/sprites/plaguebearer_front.png",
+      "resource": "UnitArt/plaguebearer_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "sheut",
+      "side": 0,
+      "source": "assets/sprites/sheut_back.png",
+      "resource": "UnitArt/sheut_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "sheut",
+      "side": 1,
+      "source": "assets/sprites/sheut_front.png",
+      "resource": "UnitArt/sheut_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "ushabti",
+      "side": 0,
+      "source": "assets/sprites/ushabti_back.png",
+      "resource": "UnitArt/ushabti_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "ushabti",
+      "side": 1,
+      "source": "assets/sprites/ushabti_front.png",
+      "resource": "UnitArt/ushabti_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "ji",
+      "side": 0,
+      "source": "assets/sprites/ji_back.png",
+      "resource": "UnitArt/ji_0",
+      "height": 1.8362967999999997,
+      "mirror": false
+    },
+    {
+      "key": "ji",
+      "side": 1,
+      "source": "assets/sprites/ji_front.png",
+      "resource": "UnitArt/ji_1",
+      "height": 1.8133751999999999,
+      "mirror": false
+    },
+    {
+      "key": "xbow",
+      "side": 0,
+      "source": "assets/sprites/xbow_back.png",
+      "resource": "UnitArt/xbow_0",
+      "height": 1.5977936,
+      "mirror": false
+    },
+    {
+      "key": "xbow",
+      "side": 1,
+      "source": "assets/sprites/xbow_front.png",
+      "resource": "UnitArt/xbow_1",
+      "height": 1.5377231999999998,
+      "mirror": false
+    },
+    {
+      "key": "dao",
+      "side": 0,
+      "source": "assets/sprites/dao_back.png",
+      "resource": "UnitArt/dao_0",
+      "height": 1.0391784,
+      "mirror": false
+    },
+    {
+      "key": "dao",
+      "side": 1,
+      "source": "assets/sprites/dao_front.png",
+      "resource": "UnitArt/dao_1",
+      "height": 1.0779079999999999,
+      "mirror": false
+    },
+    {
+      "key": "horse",
+      "side": 0,
+      "source": "assets/sprites/horse_back.png",
+      "resource": "UnitArt/horse_0",
+      "height": 2.01552,
+      "mirror": false
+    },
+    {
+      "key": "horse",
+      "side": 1,
+      "source": "assets/sprites/horse_front.png",
+      "resource": "UnitArt/horse_1",
+      "height": 2.01552,
+      "mirror": false
+    },
+    {
+      "key": "ram",
+      "side": 0,
+      "source": "assets/sprites/ram_back.png",
+      "resource": "UnitArt/ram_0",
+      "height": 2.1216,
+      "mirror": false
+    },
+    {
+      "key": "ram",
+      "side": 1,
+      "source": "assets/sprites/ram_front.png",
+      "resource": "UnitArt/ram_1",
+      "height": 2.1216,
+      "mirror": false
+    },
+    {
+      "key": "monk",
+      "side": 0,
+      "source": "assets/sprites/monk_back.png",
+      "resource": "UnitArt/monk_0",
+      "height": 1.9175103999999998,
+      "mirror": false
+    },
+    {
+      "key": "monk",
+      "side": 1,
+      "source": "assets/sprites/monk_front.png",
+      "resource": "UnitArt/monk_1",
+      "height": 1.8890559999999996,
+      "mirror": false
+    },
+    {
+      "key": "nezha",
+      "side": 0,
+      "source": "assets/sprites/nezha_back.png",
+      "resource": "UnitArt/nezha_0",
+      "height": 2.1376368,
+      "mirror": false
+    },
+    {
+      "key": "nezha",
+      "side": 1,
+      "source": "assets/sprites/nezha_front.png",
+      "resource": "UnitArt/nezha_1",
+      "height": 1.9483359999999998,
+      "mirror": false
+    },
+    {
+      "key": "houyi",
+      "side": 0,
+      "source": "assets/sprites/houyi_back.png",
+      "resource": "UnitArt/houyi_0",
+      "height": 1.5479983999999998,
+      "mirror": false
+    },
+    {
+      "key": "houyi",
+      "side": 1,
+      "source": "assets/sprites/houyi_front.png",
+      "resource": "UnitArt/houyi_1",
+      "height": 1.5790216,
+      "mirror": false
+    },
+    {
+      "key": "liji",
+      "side": 0,
+      "source": "assets/sprites/liji_back.png",
+      "resource": "UnitArt/liji_0",
+      "height": 2.0522736,
+      "mirror": false
+    },
+    {
+      "key": "liji",
+      "side": 1,
+      "source": "assets/sprites/liji_front.png",
+      "resource": "UnitArt/liji_1",
+      "height": 1.9777783999999996,
+      "mirror": false
+    },
+    {
+      "key": "celestial",
+      "side": 0,
+      "source": "assets/sprites/celestial_back.png",
+      "resource": "UnitArt/celestial_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "celestial",
+      "side": 1,
+      "source": "assets/sprites/celestial_front.png",
+      "resource": "UnitArt/celestial_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "stone",
+      "side": 0,
+      "source": "assets/sprites/stone_back.png",
+      "resource": "UnitArt/stone_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "stone",
+      "side": 1,
+      "source": "assets/sprites/stone_front.png",
+      "resource": "UnitArt/stone_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "dragon",
+      "side": 0,
+      "source": "assets/sprites/dragon_back.png",
+      "resource": "UnitArt/dragon_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "dragon",
+      "side": 1,
+      "source": "assets/sprites/dragon_front.png",
+      "resource": "UnitArt/dragon_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "stonemonkey",
+      "side": 0,
+      "source": "assets/sprites/stonemonkey_back.png",
+      "resource": "UnitArt/stonemonkey_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "stonemonkey",
+      "side": 1,
+      "source": "assets/sprites/stonemonkey_front.png",
+      "resource": "UnitArt/stonemonkey_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "xiangliu",
+      "side": 0,
+      "source": "assets/sprites/xiangliu_back.png",
+      "resource": "UnitArt/xiangliu_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "xiangliu",
+      "side": 1,
+      "source": "assets/sprites/xiangliu_front.png",
+      "resource": "UnitArt/xiangliu_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "xiaotianquan",
+      "side": 0,
+      "source": "assets/sprites/xiaotianquan_back.png",
+      "resource": "UnitArt/xiaotianquan_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "xiaotianquan",
+      "side": 1,
+      "source": "assets/sprites/xiaotianquan_front.png",
+      "resource": "UnitArt/xiaotianquan_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "fenghuang",
+      "side": 0,
+      "source": "assets/sprites/fenghuang_back.png",
+      "resource": "UnitArt/fenghuang_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "fenghuang",
+      "side": 1,
+      "source": "assets/sprites/fenghuang_front.png",
+      "resource": "UnitArt/fenghuang_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "huoshu",
+      "side": 0,
+      "source": "assets/sprites/huoshu_back.png",
+      "resource": "UnitArt/huoshu_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "huoshu",
+      "side": 1,
+      "source": "assets/sprites/huoshu_front.png",
+      "resource": "UnitArt/huoshu_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "jaderabbit",
+      "side": 0,
+      "source": "assets/sprites/jaderabbit_back.png",
+      "resource": "UnitArt/jaderabbit_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "jaderabbit",
+      "side": 1,
+      "source": "assets/sprites/jaderabbit_front.png",
+      "resource": "UnitArt/jaderabbit_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "kui",
+      "side": 0,
+      "source": "assets/sprites/kui_back.png",
+      "resource": "UnitArt/kui_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "kui",
+      "side": 1,
+      "source": "assets/sprites/kui_front.png",
+      "resource": "UnitArt/kui_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "macuahuitl",
+      "side": 0,
+      "source": "assets/sprites/macuahuitl_back.png",
+      "resource": "UnitArt/macuahuitl_0",
+      "height": 1.256736,
+      "mirror": false
+    },
+    {
+      "key": "macuahuitl",
+      "side": 1,
+      "source": "assets/sprites/macuahuitl_front.png",
+      "resource": "UnitArt/macuahuitl_1",
+      "height": 1.2504128,
+      "mirror": false
+    },
+    {
+      "key": "atlatl",
+      "side": 0,
+      "source": "assets/sprites/atlatl_back.png",
+      "resource": "UnitArt/atlatl_0",
+      "height": 2.0963384,
+      "mirror": false
+    },
+    {
+      "key": "atlatl",
+      "side": 1,
+      "source": "assets/sprites/atlatl_front.png",
+      "resource": "UnitArt/atlatl_1",
+      "height": 2.1759711999999998,
+      "mirror": false
+    },
+    {
+      "key": "jaguar",
+      "side": 0,
+      "source": "assets/sprites/jaguar_back.png",
+      "resource": "UnitArt/jaguar_0",
+      "height": 1.5555071999999999,
+      "mirror": false
+    },
+    {
+      "key": "jaguar",
+      "side": 1,
+      "source": "assets/sprites/jaguar_front.png",
+      "resource": "UnitArt/jaguar_1",
+      "height": 1.6080687999999999,
+      "mirror": false
+    },
+    {
+      "key": "otomi",
+      "side": 0,
+      "source": "assets/sprites/otomi_back.png",
+      "resource": "UnitArt/otomi_0",
+      "height": 1.4318095999999998,
+      "mirror": false
+    },
+    {
+      "key": "otomi",
+      "side": 1,
+      "source": "assets/sprites/otomi_front.png",
+      "resource": "UnitArt/otomi_1",
+      "height": 1.5634111999999998,
+      "mirror": false
+    },
+    {
+      "key": "tlequauitl",
+      "side": 0,
+      "source": "assets/sprites/tlequauitl_back.png",
+      "resource": "UnitArt/tlequauitl_0",
+      "height": 1.8086016,
+      "mirror": false
+    },
+    {
+      "key": "tlequauitl",
+      "side": 1,
+      "source": "assets/sprites/tlequauitl_front.png",
+      "resource": "UnitArt/tlequauitl_1",
+      "height": 1.9748352,
+      "mirror": false
+    },
+    {
+      "key": "cihuacoatl",
+      "side": 0,
+      "source": "assets/sprites/cihuacoatl_back.png",
+      "resource": "UnitArt/cihuacoatl_0",
+      "height": 2.0803328,
+      "mirror": false
+    },
+    {
+      "key": "cihuacoatl",
+      "side": 1,
+      "source": "assets/sprites/cihuacoatl_front.png",
+      "resource": "UnitArt/cihuacoatl_1",
+      "height": 1.9390487999999997,
+      "mirror": false
+    },
+    {
+      "key": "tepoztecatl",
+      "side": 0,
+      "source": "assets/sprites/tepoztecatl_back.png",
+      "resource": "UnitArt/tepoztecatl_0",
+      "height": 1.4252888,
+      "mirror": false
+    },
+    {
+      "key": "tepoztecatl",
+      "side": 1,
+      "source": "assets/sprites/tepoztecatl_front.png",
+      "resource": "UnitArt/tepoztecatl_1",
+      "height": 2.2565919999999995,
+      "mirror": false
+    },
+    {
+      "key": "topiltzin",
+      "side": 0,
+      "source": "assets/sprites/topiltzin_back.png",
+      "resource": "UnitArt/topiltzin_0",
+      "height": 2.1984976,
+      "mirror": false
+    },
+    {
+      "key": "topiltzin",
+      "side": 1,
+      "source": "assets/sprites/topiltzin_front.png",
+      "resource": "UnitArt/topiltzin_1",
+      "height": 2.1943479999999997,
+      "mirror": false
+    },
+    {
+      "key": "xelhua",
+      "side": 0,
+      "source": "assets/sprites/xelhua_back.png",
+      "resource": "UnitArt/xelhua_0",
+      "height": 1.8584279999999997,
+      "mirror": false
+    },
+    {
+      "key": "xelhua",
+      "side": 1,
+      "source": "assets/sprites/xelhua_front.png",
+      "resource": "UnitArt/xelhua_1",
+      "height": 1.7795855999999999,
+      "mirror": false
+    },
+    {
+      "key": "xiuhcoatl",
+      "side": 0,
+      "source": "assets/sprites/xiuhcoatl_back.png",
+      "resource": "UnitArt/xiuhcoatl_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "xiuhcoatl",
+      "side": 1,
+      "source": "assets/sprites/xiuhcoatl_front.png",
+      "resource": "UnitArt/xiuhcoatl_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "jaguarspirit",
+      "side": 0,
+      "source": "assets/sprites/jaguarspirit_back.png",
+      "resource": "UnitArt/jaguarspirit_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "jaguarspirit",
+      "side": 1,
+      "source": "assets/sprites/jaguarspirit_front.png",
+      "resource": "UnitArt/jaguarspirit_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "featheredserpent",
+      "side": 0,
+      "source": "assets/sprites/featheredserpent_back.png",
+      "resource": "UnitArt/featheredserpent_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "featheredserpent",
+      "side": 1,
+      "source": "assets/sprites/featheredserpent_front.png",
+      "resource": "UnitArt/featheredserpent_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "raintitan",
+      "side": 0,
+      "source": "assets/sprites/raintitan_back.png",
+      "resource": "UnitArt/raintitan_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "raintitan",
+      "side": 1,
+      "source": "assets/sprites/raintitan_front.png",
+      "resource": "UnitArt/raintitan_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "tlaltecuhtli",
+      "side": 0,
+      "source": "assets/sprites/tlaltecuhtli_back.png",
+      "resource": "UnitArt/tlaltecuhtli_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "tlaltecuhtli",
+      "side": 1,
+      "source": "assets/sprites/tlaltecuhtli_front.png",
+      "resource": "UnitArt/tlaltecuhtli_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "tzitzimitl",
+      "side": 0,
+      "source": "assets/sprites/tzitzimitl_back.png",
+      "resource": "UnitArt/tzitzimitl_0",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "tzitzimitl",
+      "side": 1,
+      "source": "assets/sprites/tzitzimitl_front.png",
+      "resource": "UnitArt/tzitzimitl_1",
+      "height": 2.496,
+      "mirror": false
+    },
+    {
+      "key": "itzcuintli",
+      "side": 0,
+      "source": "assets/sprites/itzcuintli_back.png",
+      "resource": "UnitArt/itzcuintli_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "itzcuintli",
+      "side": 1,
+      "source": "assets/sprites/itzcuintli_front.png",
+      "resource": "UnitArt/itzcuintli_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "centzonhuitznahua",
+      "side": 0,
+      "source": "assets/sprites/centzonhuitznahua_back.png",
+      "resource": "UnitArt/centzonhuitznahua_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "centzonhuitznahua",
+      "side": 1,
+      "source": "assets/sprites/centzonhuitznahua_front.png",
+      "resource": "UnitArt/centzonhuitznahua_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "ehecatotontin",
+      "side": 0,
+      "source": "assets/sprites/ehecatotontin_back.png",
+      "resource": "UnitArt/ehecatotontin_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "ehecatotontin",
+      "side": 1,
+      "source": "assets/sprites/ehecatotontin_front.png",
+      "resource": "UnitArt/ehecatotontin_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "colotl",
+      "side": 0,
+      "source": "assets/sprites/colotl_back.png",
+      "resource": "UnitArt/colotl_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "colotl",
+      "side": 1,
+      "source": "assets/sprites/colotl_front.png",
+      "resource": "UnitArt/colotl_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "hoplite",
+      "side": 0,
+      "source": "assets/sprites/hoplite_back.png",
+      "resource": "UnitArt/hoplite_0",
+      "height": 3.4579999999999997,
+      "mirror": false
+    },
+    {
+      "key": "hoplite",
+      "side": 1,
+      "source": "assets/sprites/hoplite_front.png",
+      "resource": "UnitArt/hoplite_1",
+      "height": 3.4579999999999997,
+      "mirror": false
+    },
+    {
+      "key": "toxotes",
+      "side": 0,
+      "source": "assets/sprites/toxotes_back.png",
+      "resource": "UnitArt/toxotes_0",
+      "height": 3.4579999999999997,
+      "mirror": false
+    },
+    {
+      "key": "toxotes",
+      "side": 1,
+      "source": "assets/sprites/toxotes_front.png",
+      "resource": "UnitArt/toxotes_1",
+      "height": 3.4579999999999997,
+      "mirror": false
+    },
+    {
+      "key": "peltast",
+      "side": 0,
+      "source": "assets/sprites/peltast_back.png",
+      "resource": "UnitArt/peltast_0",
+      "height": 3.4579999999999997,
+      "mirror": false
+    },
+    {
+      "key": "peltast",
+      "side": 1,
+      "source": "assets/sprites/peltast_front.png",
+      "resource": "UnitArt/peltast_1",
+      "height": 3.4579999999999997,
+      "mirror": false
+    },
+    {
+      "key": "companion",
+      "side": 0,
+      "source": "assets/sprites/companion_back.png",
+      "resource": "UnitArt/companion_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "companion",
+      "side": 1,
+      "source": "assets/sprites/companion_front.png",
+      "resource": "UnitArt/companion_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "atalanta",
+      "side": 0,
+      "source": "assets/sprites/atalanta_back.png",
+      "resource": "UnitArt/atalanta_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "atalanta",
+      "side": 1,
+      "source": "assets/sprites/atalanta_front.png",
+      "resource": "UnitArt/atalanta_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "odysseus",
+      "side": 0,
+      "source": "assets/sprites/odysseus_back.png",
+      "resource": "UnitArt/odysseus_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "odysseus",
+      "side": 1,
+      "source": "assets/sprites/odysseus_front.png",
+      "resource": "UnitArt/odysseus_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "heracles",
+      "side": 0,
+      "source": "assets/sprites/heracles_back.png",
+      "resource": "UnitArt/heracles_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "heracles",
+      "side": 1,
+      "source": "assets/sprites/heracles_front.png",
+      "resource": "UnitArt/heracles_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "achilles",
+      "side": 0,
+      "source": "assets/sprites/achilles_back.png",
+      "resource": "UnitArt/achilles_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "achilles",
+      "side": 1,
+      "source": "assets/sprites/achilles_front.png",
+      "resource": "UnitArt/achilles_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "ajax",
+      "side": 0,
+      "source": "assets/sprites/ajax_back.png",
+      "resource": "UnitArt/ajax_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "ajax",
+      "side": 1,
+      "source": "assets/sprites/ajax_front.png",
+      "resource": "UnitArt/ajax_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "perseus",
+      "side": 0,
+      "source": "assets/sprites/perseus_back.png",
+      "resource": "UnitArt/perseus_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "perseus",
+      "side": 1,
+      "source": "assets/sprites/perseus_front.png",
+      "resource": "UnitArt/perseus_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "theseus",
+      "side": 0,
+      "source": "assets/sprites/theseus_back.png",
+      "resource": "UnitArt/theseus_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "theseus",
+      "side": 1,
+      "source": "assets/sprites/theseus_front.png",
+      "resource": "UnitArt/theseus_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "ariadne",
+      "side": 0,
+      "source": "assets/sprites/ariadne_back.png",
+      "resource": "UnitArt/ariadne_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "ariadne",
+      "side": 1,
+      "source": "assets/sprites/ariadne_front.png",
+      "resource": "UnitArt/ariadne_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "chiron",
+      "side": 0,
+      "source": "assets/sprites/chiron_back.png",
+      "resource": "UnitArt/chiron_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "chiron",
+      "side": 1,
+      "source": "assets/sprites/chiron_front.png",
+      "resource": "UnitArt/chiron_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "orpheus",
+      "side": 0,
+      "source": "assets/sprites/orpheus_back.png",
+      "resource": "UnitArt/orpheus_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "orpheus",
+      "side": 1,
+      "source": "assets/sprites/orpheus_front.png",
+      "resource": "UnitArt/orpheus_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "triptolemus",
+      "side": 0,
+      "source": "assets/sprites/triptolemus_back.png",
+      "resource": "UnitArt/triptolemus_0",
+      "height": 1.9759999999999998,
+      "mirror": false
+    },
+    {
+      "key": "triptolemus",
+      "side": 1,
+      "source": "assets/sprites/triptolemus_front.png",
+      "resource": "UnitArt/triptolemus_1",
+      "height": 1.9759999999999998,
+      "mirror": false
+    }
+  ],
+  "powerHints": [
+    {
+      "key": "horus",
+      "text": "70 damage across the target row."
+    },
+    {
+      "key": "bastet",
+      "text": "Make a building invulnerable."
+    },
+    {
+      "key": "osiris",
+      "text": "Revive up to 3 fallen warriors."
+    },
+    {
+      "key": "isis",
+      "text": "Lock an enemy god power."
+    },
+    {
+      "key": "ra",
+      "text": "Burns the target's column."
+    },
+    {
+      "key": "anubis",
+      "text": "Death chance = damage taken, min 20%."
+    },
+    {
+      "key": "set",
+      "text": "Slow all units near the target."
+    },
+    {
+      "key": "thoth",
+      "text": "Reverse one enemy unit's route."
+    },
+    {
+      "key": "sekhmet",
+      "text": "Nearby allies attack anyone."
+    },
+    {
+      "key": "nephthys",
+      "text": "Darkness hides the crossing."
+    },
+    {
+      "key": "ptah",
+      "text": "Your next human unit is created twice."
+    },
+    {
+      "key": "jade",
+      "text": "Steal one enemy unit briefly."
+    },
+    {
+      "key": "sunwukong",
+      "text": "Your unit becomes a random myth."
+    },
+    {
+      "key": "nuwa",
+      "text": "Fully repair a damaged building."
+    },
+    {
+      "key": "longwang",
+      "text": "Flood and damage a large area."
+    },
+    {
+      "key": "gonggong",
+      "text": "Create temporary impassable rubble."
+    },
+    {
+      "key": "erlangshen",
+      "text": "Unmake summons; free the turned."
+    },
+    {
+      "key": "xiwangmu",
+      "text": "Grow bamboo on open ground."
+    },
+    {
+      "key": "zhurong",
+      "text": "Burn a target area."
+    },
+    {
+      "key": "chang",
+      "text": "Slow all units and reveal enemies."
+    },
+    {
+      "key": "leigong",
+      "text": "Stun enemies near the target."
+    },
+    {
+      "key": "huitzilopochtli",
+      "text": "Buff allies at an HP cost."
+    },
+    {
+      "key": "quetzalcoatl",
+      "text": "Reset every enemy route."
+    },
+    {
+      "key": "tezcatlipoca",
+      "text": "Clone an enemy against itself."
+    },
+    {
+      "key": "tlaloc",
+      "text": "Flood open tiles near the target."
+    },
+    {
+      "key": "xipetotec",
+      "text": "Disable all enemy passive bonuses."
+    },
+    {
+      "key": "coatlicue",
+      "text": "Poison every enemy unit."
+    },
+    {
+      "key": "mictlantecuhtli",
+      "text": "Gift favor; a random myth answers."
+    },
+    {
+      "key": "coyolxauhqui",
+      "text": "Split an enemy into dueling copies."
+    },
+    {
+      "key": "ehecatl",
+      "text": "Greatly speed up all allies."
+    },
+    {
+      "key": "itzpapalotl",
+      "text": "Damage and slow nearby enemies."
+    }
+  ]
+}

@@ -1,0 +1,2248 @@
+{
+  "source": "godsbound_beta.html",
+  "playerRows": 6,
+  "cols": 9,
+  "budget": [
+    {
+      "code": "F",
+      "max": 5
+    },
+    {
+      "code": "M",
+      "max": 6
+    },
+    {
+      "code": "W",
+      "max": 5
+    }
+  ],
+  "cases": [
+    {
+      "name": "default egypt",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": true,
+      "normalized": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "default china",
+      "preset": {
+        "faction": "china",
+        "loadout": [
+          "ji",
+          "xbow",
+          "dao",
+          "ram"
+        ],
+        "heroes": [
+          "nezha",
+          "houyi"
+        ],
+        "gods": [
+          "jade",
+          "sunwukong",
+          "nuwa",
+          "longwang"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": true,
+      "normalized": {
+        "faction": "china",
+        "loadout": [
+          "ji",
+          "xbow",
+          "dao",
+          "ram"
+        ],
+        "heroes": [
+          "nezha",
+          "houyi"
+        ],
+        "gods": [
+          "jade",
+          "sunwukong",
+          "nuwa",
+          "longwang"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "default aztec",
+      "preset": {
+        "faction": "aztec",
+        "loadout": [
+          "macuahuitl",
+          "atlatl",
+          "jaguar",
+          "tlequauitl"
+        ],
+        "heroes": [
+          "tepoztecatl",
+          "topiltzin"
+        ],
+        "gods": [
+          "huitzilopochtli",
+          "quetzalcoatl",
+          "tezcatlipoca",
+          "mictlantecuhtli"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": true,
+      "normalized": {
+        "faction": "aztec",
+        "loadout": [
+          "macuahuitl",
+          "atlatl",
+          "jaguar",
+          "tlequauitl"
+        ],
+        "heroes": [
+          "tepoztecatl",
+          "topiltzin"
+        ],
+        "gods": [
+          "huitzilopochtli",
+          "quetzalcoatl",
+          "tezcatlipoca",
+          "mictlantecuhtli"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "default greek",
+      "preset": {
+        "faction": "greek",
+        "loadout": [
+          "hoplite",
+          "toxotes",
+          "peltast",
+          "krios"
+        ],
+        "heroes": [
+          "heracles",
+          "atalanta"
+        ],
+        "gods": [
+          "artemis",
+          "hades",
+          "dionysus",
+          "hephaestus"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": true,
+      "normalized": {
+        "faction": "greek",
+        "loadout": [
+          "hoplite",
+          "toxotes",
+          "peltast",
+          "krios"
+        ],
+        "heroes": [
+          "heracles",
+          "atalanta"
+        ],
+        "gods": [
+          "artemis",
+          "hades",
+          "dionysus",
+          "hephaestus"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "three gods",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "five gods",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis",
+          "ra"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "the same god twice",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "horus",
+          "bastet",
+          "osiris"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "a god from another pantheon",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "jade",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "five humans",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "chariot",
+          "priest"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "three humans",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "the same human twice",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "spear",
+          "archer",
+          "axe"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "a myth in the hand",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "sphinx",
+          "spear",
+          "archer",
+          "axe"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "a hero in the hand",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "sinuhe",
+          "spear",
+          "archer",
+          "axe"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "one hero",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "a human in a hero slot",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "spear",
+          "sinuhe"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "an unknown faction",
+      "preset": {
+        "faction": "atlantis",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "five terrain rows",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "a short terrain row",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "PPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "an unknown terrain letter",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "XPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "one mountain over budget",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "MMMMMMMPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "painted to the budget",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "MMMMMMPPP",
+          "FFFFFPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": true,
+      "normalized": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "MMMMMMPPP",
+          "FFFFFPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "two buildings",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "two cities",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "city",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          },
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "an unknown building type",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "granary",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "hexes that are not adjacent",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 4,
+            "r1": 4
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "hexes that are the same",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 1,
+            "r1": 4
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "two buildings on one hex",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "temple",
+            "c0": 4,
+            "r0": 4,
+            "c1": 3,
+            "r1": 4
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "a building off the half",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 6,
+            "c1": 2,
+            "r1": 6
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "a building off the board",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD",
+          "DDDDDDDDD"
+        ],
+        "buildings": [
+          {
+            "type": "temple",
+            "c0": 8,
+            "r0": 4,
+            "c1": 9,
+            "r1": 4
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "a building on water",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PWWPPPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "a building on a mountain",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPMPPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": false,
+      "normalized": {
+        "faction": "",
+        "loadout": [],
+        "heroes": [],
+        "gods": [],
+        "terrain": [],
+        "buildings": []
+      }
+    },
+    {
+      "name": "a building on a forest",
+      "preset": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPFFPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      },
+      "ok": true,
+      "normalized": {
+        "faction": "egypt",
+        "loadout": [
+          "spear",
+          "archer",
+          "axe",
+          "elephant"
+        ],
+        "heroes": [
+          "bata",
+          "doomedprince"
+        ],
+        "gods": [
+          "horus",
+          "bastet",
+          "osiris",
+          "isis"
+        ],
+        "terrain": [
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPPPPPP",
+          "PPPPFFPPP",
+          "PPPPPPPPP"
+        ],
+        "buildings": [
+          {
+            "type": "fortress",
+            "c0": 6,
+            "r0": 2,
+            "c1": 7,
+            "r1": 2
+          },
+          {
+            "type": "city",
+            "c0": 4,
+            "r0": 4,
+            "c1": 5,
+            "r1": 4
+          },
+          {
+            "type": "temple",
+            "c0": 1,
+            "r0": 4,
+            "c1": 2,
+            "r1": 4
+          }
+        ]
+      }
+    }
+  ]
+}
