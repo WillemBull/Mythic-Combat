@@ -428,7 +428,7 @@ namespace Godsbound.Tests
             var go=new GameObject("AiSceneTest");
             try
             {
-                var controller=go.AddComponent<MatchController>();controller.Initialize();
+                var controller=go.AddComponent<MatchController>();controller.Initialize(deck: TestDeck.Egypt(), storePath: TestDeck.Scratch());
                 Assert.That(controller.State.Ai,Is.Not.Null);controller.Begin();
                 for(int i=0;i<600;i++)controller.Advance(0.05f);
                 var units=controller.State.Units.AliveOf(1).ToArray();Assert.That(units.Length,Is.GreaterThan(0));

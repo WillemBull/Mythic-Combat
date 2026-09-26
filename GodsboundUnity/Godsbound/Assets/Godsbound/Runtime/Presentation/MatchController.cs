@@ -149,6 +149,9 @@ namespace Godsbound.Presentation
             if (buildings != null) buildings.Sync();
             if (units != null) units.Sync();
             if (hits != null) hits.Sync();
+            // The bar knows a drag is hunting for a building; the board is what can show it (U40).
+            if (buildings != null)
+                buildings.DeployHighlight = GetComponent<BattleHud>()?.WantsDeployTargets == true ? 0 : -1;
             // After the step, so a hint's clock is the match's own: a paused match pauses the hints.
             Hints.Tick(State.Elapsed);
             if (board != null) board.SyncTerrain();

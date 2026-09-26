@@ -102,7 +102,7 @@ namespace Godsbound.Tests
             var go=new GameObject("FortressGateTest");
             try
             {
-                var controller=go.AddComponent<MatchController>(); controller.Initialize(enableAi:false);
+                var controller=go.AddComponent<MatchController>(); controller.Initialize(enableAi:false, deck: TestDeck.Egypt(), storePath: TestDeck.Scratch());
                 var s=controller.State;var b=s.Buildings.Of(0,BuildingType.Fortress);
                 var u=s.Units.Spawn(1,s.Database.Unit("egypt","spear"),b.HexA);
                 controller.Advance(0.05f);Assert.That(u.Hp,Is.EqualTo(u.MaxHp));

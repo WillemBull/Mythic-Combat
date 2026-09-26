@@ -47,7 +47,7 @@ namespace Godsbound.Tests
             try
             {
                 var controller = go.AddComponent<MatchController>();
-                controller.Initialize(enableAi: false);
+                controller.Initialize(enableAi: false, deck: TestDeck.Egypt(), storePath: TestDeck.Scratch());
                 var hud = go.GetComponent<BattleHud>();
                 hud.Bind(controller);
                 var state = controller.State;
@@ -164,7 +164,7 @@ namespace Godsbound.Tests
             try
             {
                 var controller = go.AddComponent<MatchController>();
-                controller.Initialize(enableAi: false);
+                controller.Initialize(enableAi: false, deck: TestDeck.Egypt(), storePath: TestDeck.Scratch());
                 var hud = go.GetComponent<BattleHud>();
                 hud.Bind(controller); // OnEnable does not run in EditMode
                 var state = controller.State;

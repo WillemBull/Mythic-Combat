@@ -19,7 +19,8 @@ namespace Godsbound.Tests
             board = new GameObject("TestBoard"); board.AddComponent<BoardView>();
             buildings = new GameObject("TestBuildings"); buildings.AddComponent<BuildingsView>();
             root = new GameObject("TestMatch"); controller = root.AddComponent<MatchController>();
-            controller.Initialize(board.GetComponent<BoardView>(), buildings.GetComponent<BuildingsView>(), enableAi: false);
+            controller.Initialize(board.GetComponent<BoardView>(), buildings.GetComponent<BuildingsView>(), enableAi: false,
+                        deck: TestDeck.Egypt(), storePath: TestDeck.Scratch());
         }
         [TearDown] public void Cleanup()
         {

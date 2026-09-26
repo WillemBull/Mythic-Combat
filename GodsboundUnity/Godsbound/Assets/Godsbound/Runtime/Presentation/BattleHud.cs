@@ -62,6 +62,19 @@ namespace Godsbound.Presentation
         public IReadOnlyList<string> Deck => deck;
         private const string InitialHint = "Drag a card through your building, then draw a route.";
         private string hint = InitialHint;
+        // U40: the ghost needs the unit's own art, so the HUD keeps a catalog of its own. Resolve
+        // caches per resource, so this costs one sprite for the card being dragged.
+        private UnitArtCatalog ghostArt;
+        // A failed release explains itself where the finger let go, not only in the bar at the top
+        // of the screen. Ours, not the browser's — on a phone that bar is nowhere near your thumb.
+        private string failure; private float failureUntil; private Vector2 failureAt;
+        public const float FailureSeconds = 1.6f;
+
+        /// <summary>
+        /// True while a drag is looking for a building to start from, so the board can light up the
+        /// ones that qualify (U40). Added for touch: the browser only says it in words.
+        /// </summary>
+        public bool WantsDeployTargets => draft != null && draft.Source == null;
         // Per-card cost text never changes for a unit, so it is built once per key rather than on
         // every OnGUI event (which fires several times a frame).
         private readonly Dictionary<string, string> costLabels = new Dictionary<string, string>();
@@ -82,6 +95,7 @@ namespace Godsbound.Presentation
         }
         private void OnDisable()
         {
+            ghostArt?.Dispose(); ghostArt = null;
             Cancel();
             if (controller != null) controller.Resetting -= ResetCards;
             Subscribe(null);
@@ -416,6 +430,8 @@ namespace Godsbound.Presentation
                     UnitPrice.CanAfford(state.Resources[0], def, state.TrainingModifiersFor(0), state.Database.Training);
                 var oldColor = GUI.color;
                 GUI.color = enabled ? Color.white : new Color(0.6f, 0.6f, 0.6f);
+                // The browser's .card.dragging{opacity:.35} — the card you are holding looks held.
+                if (draft != null && draft.Definition.key == def.key) GUI.color *= new Color(1f, 1f, 1f, 0.35f);
                 if (!costLabels.TryGetValue(def.key, out var costLabel))
                     costLabels[def.key] = costLabel = $"{def.name}\n{def.costFood} food" + (def.costFavor > 0 ? $" • {def.costFavor} favor" : "");
                 GUI.Box(rect, queued > 0 ? costLabel + "\nQueued: " + queued : costLabel, cardStyle);
@@ -423,7 +439,7 @@ namespace Godsbound.Presentation
                 if (enabled && evt.type == EventType.MouseDown && evt.button == 0 && rect.Contains(evt.mousePosition))
                 {
                     Cancel(); draft = new DeploymentDraft(state, def); GUIUtility.hotControl = pointerControl;
-                    hint = "Drag through a gold, purple or red building on your half."; evt.Use();
+                    hint = DeploymentPrompt.PickedUp(def.name); evt.Use();
                 }
             }
             DrawGodTiles(state, layout.Gods, evt);
@@ -446,18 +462,20 @@ namespace Godsbound.Presentation
                 if (evt.type == EventType.MouseDrag)
                 {
                     if (onBoard) draft.Visit(hex);
-                    if (draft.Source != null) hint = "Draw your route. Release to train; Esc cancels.";
+                    if (draft.Source != null) hint = DeploymentPrompt.RouteNext;
                     evt.Use();
                 }
                 else if (evt.type == EventType.MouseUp && evt.button == 0)
                 {
                     bool legal = onBoard && state.Terrain.RouteOk(hex, draft.Definition.IsFlying, state.Buildings.RouteBlocker);
                     var used = draft.Definition;
-                    string reason = draft.Source == null ? "Drag through your building first." : draft.Route.Count == 0 ?
-                        "Draw a route out of your building." : !legal ? "Release on an open battlefield hex." : "Route cancelled. No resources spent.";
+                    bool affordable = UnitPrice.CanAfford(state.Resources[0], used, state.TrainingModifiersFor(0), state.Database.Training);
+                    string reason = DeploymentPrompt.ForFailure(draft.Source != null, draft.Route.Count > 0, legal, affordable)
+                                    ?? DeploymentPrompt.NoBuilding;
                     bool paid = draft.Commit(legal);
-                    hint = paid ? used.name + " training…" : reason;
+                    hint = paid ? DeploymentPrompt.Training(used.name) : reason;
                     if (paid) RotateHand(deck, used.key, handSize);
+                    else { failure = reason; failureUntil = state.Elapsed + FailureSeconds; failureAt = evt.mousePosition; }
                     Cancel(); evt.Use();
                 }
                 else if (evt.type == EventType.Repaint)
@@ -468,6 +486,8 @@ namespace Godsbound.Presentation
             }
             if (state.Objectives.Resolved)
                 GUI.Box(new Rect(45, height * 0.42f, width - 90, 70), state.Objectives.Result.Value.Outcome + "\nRestart to play again.", heading);
+            DrawDragGhost(evt);
+            DrawFailure(state);
             DrawTutorialCallout(top, bottom);
             GUI.matrix = oldMatrix;
         }
@@ -487,6 +507,37 @@ namespace Godsbound.Presentation
             rect = new Rect(top.x + pad, y, top.width - pad * 2f, h);
             message = current.Value.Text;
             return true;
+        }
+
+        /// <summary>
+        /// The browser's <c>#ghost</c>: the unit rides the pointer from the moment the card is picked
+        /// up until it is released. The browser draws the unit's emoji; Unity has the sprite, so it
+        /// draws that — same job, better material. Offset like the browser's
+        /// transform:translate(-50%,-60%), so the art sits above the fingertip rather than under it.
+        /// </summary>
+        private void DrawDragGhost(Event evt)
+        {
+            if (draft == null || evt.type != EventType.Repaint) return;
+            if (ghostArt == null) ghostArt = new UnitArtCatalog(PresentationData.Load());
+            var sprite = ghostArt.Resolve(draft.Definition.key, 0);
+            const float size = 46f;
+            var rect = new Rect(evt.mousePosition.x - size * 0.5f, evt.mousePosition.y - size * 0.6f, size, size);
+            if (sprite != null && sprite.texture != null)
+                GUI.DrawTexture(rect, sprite.texture, ScaleMode.ScaleToFit);
+            else GUI.Label(rect, draft.Definition.name, text);   // art missing: still say what is being carried
+        }
+
+        /// <summary>A refused release, explained where it happened. Times out on the match clock.</summary>
+        private void DrawFailure(MatchState state)
+        {
+            if (failure == null || state.Elapsed >= failureUntil) { failure = null; return; }
+            var rect = new Rect(failureAt.x - 90f, failureAt.y - 34f, 180f, 30f);
+            var old = GUI.color;
+            GUI.color = new Color(0.1f, 0.06f, 0.06f, 0.9f);
+            GUI.Box(rect, GUIContent.none);
+            GUI.color = new Color(1f, 0.72f, 0.66f);
+            GUI.Label(rect, failure, text);
+            GUI.color = old;
         }
 
         /// <summary>Drawn last, so nothing else paints over the one thing the player is meant to read.</summary>

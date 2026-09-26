@@ -59,6 +59,15 @@ namespace Godsbound.Presentation
         // during deserialization, where engine objects should not be built.
         private MaterialPropertyBlock syncBlock;
         public int TracerCount => traces.Count;
+
+        /// <summary>
+        /// While a card is being dragged, the side whose buildings can start a route — or -1 for
+        /// none (U40). They pulse gold so the player can SEE where to drag, which the browser only
+        /// ever said in words. Presentation only: it changes nothing about what is legal.
+        /// </summary>
+        public int DeployHighlight { get; set; } = -1;
+        /// <summary>Gold, twice a second, never fully off: a hint, not an alarm.</summary>
+        public static float Pulse(float elapsed) => 0.65f + 0.35f * Mathf.Sin(elapsed * 6.3f);
         public Transform BodyOf(Building b) => bodies.TryGetValue(b,out var body) ? body.Visual.transform : null;
 
         /// <summary>The buildings being drawn. Loaded from the export on first use.</summary>
@@ -213,6 +222,12 @@ namespace Godsbound.Presentation
                 body.Art.sortingOrder = -1000;
                 // Bastet's Guardian's Grace: a warded building glows gold while it cannot be damaged.
                 body.Art.color = match != null && match.Elapsed < b.InvulnerableUntil ? new Color(1f, 0.92f, 0.55f) : Color.white;
+                // A deploy target outranks the ward tint: it is an instruction, and it is transient.
+                if (!b.Dead && b.Side == DeployHighlight)
+                {
+                    float pulse = Pulse(match?.Elapsed ?? 0f);
+                    body.Art.color = Color.Lerp(body.Art.color, new Color(1f, 0.85f, 0.35f), pulse);
+                }
                 Wear(b,body,size,arted);
                 float barY = arted ? data.anchorY*size+data.healthGap*unitsPerHex : 1.15f*unitsPerHex;
                 float width = data.healthWidth*unitsPerHex;
