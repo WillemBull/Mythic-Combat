@@ -1256,6 +1256,218 @@
       "mirror": false
     }
   ],
+  "godArt": [
+    {
+      "key": "horus",
+      "source": "assets/sprites/god_horus.jpg",
+      "resource": "GodArt/horus"
+    },
+    {
+      "key": "bastet",
+      "source": "assets/sprites/god_bastet.jpg",
+      "resource": "GodArt/bastet"
+    },
+    {
+      "key": "osiris",
+      "source": "assets/sprites/god_osiris.jpg",
+      "resource": "GodArt/osiris"
+    },
+    {
+      "key": "isis",
+      "source": "assets/sprites/god_isis.jpg",
+      "resource": "GodArt/isis"
+    },
+    {
+      "key": "ra",
+      "source": "assets/sprites/god_ra.jpg",
+      "resource": "GodArt/ra"
+    },
+    {
+      "key": "anubis",
+      "source": "assets/sprites/god_anubis.jpg",
+      "resource": "GodArt/anubis"
+    },
+    {
+      "key": "set",
+      "source": "assets/sprites/god_set.jpg",
+      "resource": "GodArt/set"
+    },
+    {
+      "key": "thoth",
+      "source": "assets/sprites/god_thoth.jpg",
+      "resource": "GodArt/thoth"
+    },
+    {
+      "key": "sekhmet",
+      "source": "assets/sprites/god_sekhmet.jpg",
+      "resource": "GodArt/sekhmet"
+    },
+    {
+      "key": "nephthys",
+      "source": "assets/sprites/god_nephthys.jpg",
+      "resource": "GodArt/nephthys"
+    },
+    {
+      "key": "ptah",
+      "source": "assets/sprites/god_ptah.jpg",
+      "resource": "GodArt/ptah"
+    },
+    {
+      "key": "artemis",
+      "source": "assets/sprites/god_artemis.jpg",
+      "resource": "GodArt/artemis"
+    },
+    {
+      "key": "hades",
+      "source": "assets/sprites/god_hades.jpg",
+      "resource": "GodArt/hades"
+    },
+    {
+      "key": "dionysus",
+      "source": "assets/sprites/god_dionysus.jpg",
+      "resource": "GodArt/dionysus"
+    },
+    {
+      "key": "hephaestus",
+      "source": "assets/sprites/god_hephaestus.jpg",
+      "resource": "GodArt/hephaestus"
+    },
+    {
+      "key": "zeus",
+      "source": "assets/sprites/god_zeus.jpg",
+      "resource": "GodArt/zeus"
+    },
+    {
+      "key": "poseidon",
+      "source": "assets/sprites/god_poseidon.jpg",
+      "resource": "GodArt/poseidon"
+    },
+    {
+      "key": "athena",
+      "source": "assets/sprites/god_athena.jpg",
+      "resource": "GodArt/athena"
+    },
+    {
+      "key": "ares",
+      "source": "assets/sprites/god_ares.jpg",
+      "resource": "GodArt/ares"
+    },
+    {
+      "key": "apollo",
+      "source": "assets/sprites/god_apollo.jpg",
+      "resource": "GodArt/apollo"
+    },
+    {
+      "key": "hermes",
+      "source": "assets/sprites/god_hermes.jpg",
+      "resource": "GodArt/hermes"
+    },
+    {
+      "key": "demeter",
+      "source": "assets/sprites/god_demeter.jpg",
+      "resource": "GodArt/demeter"
+    },
+    {
+      "key": "jade",
+      "source": "assets/sprites/god_jade.jpg",
+      "resource": "GodArt/jade"
+    },
+    {
+      "key": "nuwa",
+      "source": "assets/sprites/god_nuwa.jpg",
+      "resource": "GodArt/nuwa"
+    },
+    {
+      "key": "huitzilopochtli",
+      "source": "assets/sprites/god_huitzilopochtli.jpg",
+      "resource": "GodArt/huitzilopochtli"
+    },
+    {
+      "key": "quetzalcoatl",
+      "source": "assets/sprites/god_quetzalcoatl.jpg",
+      "resource": "GodArt/quetzalcoatl"
+    },
+    {
+      "key": "tlaloc",
+      "source": "assets/sprites/god_tlaloc.jpg",
+      "resource": "GodArt/tlaloc"
+    },
+    {
+      "key": "tezcatlipoca",
+      "source": "assets/sprites/god_tezcatlipoca.jpg",
+      "resource": "GodArt/tezcatlipoca"
+    },
+    {
+      "key": "xipetotec",
+      "source": "assets/sprites/god_xipetotec.jpg",
+      "resource": "GodArt/xipetotec"
+    },
+    {
+      "key": "coatlicue",
+      "source": "assets/sprites/god_coatlicue.jpg",
+      "resource": "GodArt/coatlicue"
+    },
+    {
+      "key": "mictlantecuhtli",
+      "source": "assets/sprites/god_mictlantecuhtli.jpg",
+      "resource": "GodArt/mictlantecuhtli"
+    },
+    {
+      "key": "coyolxauhqui",
+      "source": "assets/sprites/god_coyolxauhqui.jpg",
+      "resource": "GodArt/coyolxauhqui"
+    },
+    {
+      "key": "ehecatl",
+      "source": "assets/sprites/god_ehecatl.jpg",
+      "resource": "GodArt/ehecatl"
+    },
+    {
+      "key": "itzpapalotl",
+      "source": "assets/sprites/god_itzpapalotl.jpg",
+      "resource": "GodArt/itzpapalotl"
+    },
+    {
+      "key": "sunwukong",
+      "source": "assets/sprites/god_sunwukong.jpg",
+      "resource": "GodArt/sunwukong"
+    },
+    {
+      "key": "longwang",
+      "source": "assets/sprites/god_longwang.jpg",
+      "resource": "GodArt/longwang"
+    },
+    {
+      "key": "gonggong",
+      "source": "assets/sprites/god_gonggong.jpg",
+      "resource": "GodArt/gonggong"
+    },
+    {
+      "key": "erlangshen",
+      "source": "assets/sprites/god_erlangshen.jpg",
+      "resource": "GodArt/erlangshen"
+    },
+    {
+      "key": "xiwangmu",
+      "source": "assets/sprites/god_xiwangmu.jpg",
+      "resource": "GodArt/xiwangmu"
+    },
+    {
+      "key": "zhurong",
+      "source": "assets/sprites/god_zhurong.jpg",
+      "resource": "GodArt/zhurong"
+    },
+    {
+      "key": "chang",
+      "source": "assets/sprites/god_chang.jpg",
+      "resource": "GodArt/chang"
+    },
+    {
+      "key": "leigong",
+      "source": "assets/sprites/god_leigong.jpg",
+      "resource": "GodArt/leigong"
+    }
+  ],
   "powerHints": [
     {
       "key": "horus",

@@ -5,10 +5,24 @@ const fs=require("fs"),path=require("path"),crypto=require("crypto");
 const self=fs.readFileSync(__filename,"utf8"),begin="/*"+"DRIVER*/",end="/*END-"+"DRIVER*/";
 eval(src+self.slice(self.indexOf(begin)+begin.length,self.indexOf(end)));
 const root=path.resolve(__dirname,".."),assets=path.join(root,"GodsboundUnity/Godsbound/Assets/Godsbound");
-for(const entry of globalThis.__presentation.art){
-  const source=path.resolve(root,entry.source);
-  if(!source.startsWith(path.join(root,"assets","sprites")+path.sep))throw Error("Art outside sprite directory");
-  const dest=path.join(assets,"Resources",entry.resource+".png");
+/* WHERE THE ART COMES FROM. This is the only exporter that needs the raw sprite files rather than
+   just godsbound_beta.html, and the 2026-09-24 split left assets/sprites/ in the design-drafts
+   repository. So the directory is a flag, defaulting to this repository's own copy if it has one:
+
+     node tools/export_unity_presentation.js --sprites "C:/Users/willr/Claude/Projects/Game Design/assets/sprites"
+
+   Duplicating 45MB of art into this repository would be the other answer; a flag and a clear error
+   beat a second copy that can silently fall behind the first. */
+const spriteFlag=process.argv.indexOf("--sprites");
+const sprites=spriteFlag>=0?path.resolve(process.argv[spriteFlag+1]):path.join(root,"assets","sprites");
+if(!fs.existsSync(sprites))throw Error("No sprite directory at "+sprites+" — pass --sprites <path to assets/sprites>");
+/* God portraits ride along with the unit art: same rule (must live under assets/sprites), same
+   .meta handling, but they keep their own extension because GOD_PORTRAITS is jpg. */
+for(const entry of [...globalThis.__presentation.art,...globalThis.__presentation.godArt]){
+  // entry.source is the browser's own relative path, e.g. assets/sprites/foo.png.
+  const source=path.join(sprites,path.basename(entry.source));
+  if(!fs.existsSync(source))throw Error("Missing art: "+entry.source+" (looked in "+sprites+")");
+  const dest=path.join(assets,"Resources",entry.resource+path.extname(source));
   fs.mkdirSync(path.dirname(dest),{recursive:true});fs.copyFileSync(source,dest);
   const meta=dest+".meta",previous=fs.existsSync(meta)?fs.readFileSync(meta,"utf8"):"";
   const guid=previous.match(/guid: (\w+)/)?.[1]||crypto.createHash("md5").update(entry.resource).digest("hex");
@@ -53,19 +67,23 @@ TextureImporter:
 }
 fs.writeFileSync(path.join(assets,"Resources/GameData/presentation.json"),JSON.stringify(globalThis.__presentation,null,2)+"\n");
 fs.writeFileSync(path.join(assets,"Tests/EditMode/Fixtures/deployment_reference.json"),JSON.stringify(globalThis.__deployment,null,2)+"\n");
-console.log("Exported "+globalThis.__presentation.art.length+" unit images and "+globalThis.__deployment.cases.length+" drag cases");
+console.log("Exported "+globalThis.__presentation.art.length+" unit images, "+globalThis.__presentation.godArt.length+" god portraits and "+globalThis.__deployment.cases.length+" drag cases");
 if(false){
 /*DRIVER*/
 code+=`
 ;(function(){
   startMatch();
-  const data={source:"godsbound_beta.html",food:S.food,favor:S.favor,aiFood:S.aiFood,aiFavor:S.aiFavor,anchorDown:0.42,handSize:HAND_SIZE,art:[],
+  const data={source:"godsbound_beta.html",food:S.food,favor:S.favor,aiFood:S.aiFood,aiFavor:S.aiFavor,anchorDown:0.42,handSize:HAND_SIZE,art:[],godArt:[],
     powerHints:Object.keys(POWER_HINTS).map(k=>({key:k,text:POWER_HINTS[k]}))};
   for(const [key,def] of Object.entries(ALL_UNITS))for(const side of [0,1]){
     const entry=IMG_SPRITES[key],file=typeof entry==="object"?entry[side]:entry;
     if(!file)continue;
     data.art.push({key,side,source:file,resource:"UnitArt/"+key+"_"+side,height:32*unitSpriteScale({def,size:def.size,side})/HEX,mirror:side===1&&typeof entry!=="object"});
   }
+  /* The god tiles' faces, straight from the browser's GOD_PORTRAITS table rather than from a
+     filename convention — the table is the truth, and a god that is missing from it should show
+     up here as a missing portrait, not as a guessed path that happens to 404. */
+  for(const [key,file] of Object.entries(GOD_PORTRAITS)) data.godArt.push({key,source:file,resource:"GodArt/"+key});
   // Verify the anchor against the draw implementation rather than silently drifting.
   const anchor=drawUnitSprite.toString().match(/p.y\\+HEX\\*([0-9.]+)/);
   if(!anchor)throw Error("Sprite anchor expression changed");data.anchorDown=Number(anchor[1]);

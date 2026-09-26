@@ -62,9 +62,10 @@ namespace Godsbound.Presentation
         public IReadOnlyList<string> Deck => deck;
         private const string InitialHint = "Drag a card through your building, then draw a route.";
         private string hint = InitialHint;
-        // U40: the ghost needs the unit's own art, so the HUD keeps a catalog of its own. Resolve
-        // caches per resource, so this costs one sprite for the card being dragged.
+        // U40/U41: the HUD's own art catalog — the drag ghost, the cards' portraits and the god
+        // tiles' faces all come from here. Resolve and Portrait cache per resource.
         private UnitArtCatalog ghostArt;
+        private UnitArtCatalog Art => ghostArt ?? (ghostArt = new UnitArtCatalog(PresentationData.Load()));
         // A failed release explains itself where the finger let go, not only in the bar at the top
         // of the screen. Ours, not the browser's — on a phone that bar is nowhere near your thumb.
         private string failure; private float failureUntil; private Vector2 failureAt;
@@ -78,7 +79,7 @@ namespace Godsbound.Presentation
         // Per-card cost text never changes for a unit, so it is built once per key rather than on
         // every OnGUI event (which fires several times a frame).
         private readonly Dictionary<string, string> costLabels = new Dictionary<string, string>();
-        private GUIStyle text, cardStyle, heading;
+        private GUIStyle text, cardStyle, heading, small;
         private int pointerControl;
         public DeploymentDraft Draft => draft;
         private void OnEnable() { Bind(GetComponent<MatchController>()); }
@@ -369,6 +370,9 @@ namespace Godsbound.Presentation
                 text = new GUIStyle(GUI.skin.label) { fontSize = 11, alignment = TextAnchor.MiddleCenter, wordWrap = true };
                 cardStyle = new GUIStyle(GUI.skin.box) { fontSize = 10, alignment = TextAnchor.MiddleCenter, wordWrap = true };
                 heading = new GUIStyle(text) { fontSize = 15, fontStyle = FontStyle.Bold };
+                // The browser's card text is 7.5px against its 11px body copy. A unit name is two
+                // words in a 63px card: at body size it clips, which is what the first cut of U41 did.
+                small = new GUIStyle(text) { fontSize = 8, wordWrap = true };
             }
             float scale = HudScale(Screen.width, Screen.height), width = Screen.width / scale, height = Screen.height / scale;
             var oldMatrix = GUI.matrix;
@@ -433,8 +437,28 @@ namespace Godsbound.Presentation
                 // The browser's .card.dragging{opacity:.35} — the card you are holding looks held.
                 if (draft != null && draft.Definition.key == def.key) GUI.color *= new Color(1f, 1f, 1f, 0.35f);
                 if (!costLabels.TryGetValue(def.key, out var costLabel))
-                    costLabels[def.key] = costLabel = $"{def.name}\n{def.costFood} food" + (def.costFavor > 0 ? $" • {def.costFavor} favor" : "");
-                GUI.Box(rect, queued > 0 ? costLabel + "\nQueued: " + queued : costLabel, cardStyle);
+                    costLabels[def.key] = costLabel = $"{def.costFood} food" + (def.costFavor > 0 ? $" · {def.costFavor} favor" : "");
+                // The browser's card is a portrait over a name over a cost (.uport/.uname/.ucost).
+                // Unity had text alone, which is why a hand of six read as a wall of words (U41).
+                GUI.Box(rect, GUIContent.none, cardStyle);
+                var portrait = Art.Resolve(def.key, 0);
+                // Two lines for the name — "Macuahuitl Warrior" and "The Doomed Prince" do not fit on
+                // one at this width — and the art takes whatever is left above them.
+                float nameH = 19f, costH = 10f;
+                var artRect = new Rect(rect.x + 2f, rect.y + 1f, rect.width - 4f, rect.height - nameH - costH - 2f);
+                if (portrait != null && portrait.texture != null)
+                    GUI.DrawTexture(artRect, portrait.texture, ScaleMode.ScaleToFit);
+                GUI.Label(new Rect(rect.x + 1f, rect.yMax - nameH - costH, rect.width - 2f, nameH), def.name, small);
+                GUI.Label(new Rect(rect.x, rect.yMax - costH, rect.width, costH), costLabel, small);
+                // Queued copies are the one number that changes while you look at the card, so it
+                // gets a corner badge rather than a third line that shifts the others.
+                if (queued > 0)
+                {
+                    var badge = new Rect(rect.xMax - 16f, rect.y + 2f, 14f, 12f);
+                    var was = GUI.color; GUI.color = new Color(0.1f, 0.12f, 0.18f, 0.92f);
+                    GUI.Box(badge, GUIContent.none); GUI.color = new Color(1f, 0.85f, 0.45f);
+                    GUI.Label(badge, queued.ToString(), small); GUI.color = was;
+                }
                 GUI.color = oldColor;
                 if (enabled && evt.type == EventType.MouseDown && evt.button == 0 && rect.Contains(evt.mousePosition))
                 {
@@ -518,8 +542,7 @@ namespace Godsbound.Presentation
         private void DrawDragGhost(Event evt)
         {
             if (draft == null || evt.type != EventType.Repaint) return;
-            if (ghostArt == null) ghostArt = new UnitArtCatalog(PresentationData.Load());
-            var sprite = ghostArt.Resolve(draft.Definition.key, 0);
+            var sprite = Art.Resolve(draft.Definition.key, 0);
             const float size = 46f;
             var rect = new Rect(evt.mousePosition.x - size * 0.5f, evt.mousePosition.y - size * 0.6f, size, size);
             if (sprite != null && sprite.texture != null)
@@ -566,8 +589,23 @@ namespace Godsbound.Presentation
                     : view.Previewed ? new Color(0.78f, 0.55f, 1f)
                     : view.Unlocked ? (view.Recharging ? new Color(0.6f, 0.6f, 0.6f) : new Color(1f, 0.85f, 0.45f))
                     : view.Affordable ? new Color(0.8f, 0.7f, 1f) : new Color(0.55f, 0.55f, 0.6f);
-                GUI.Box(rect, view.Label, cardStyle);
+                GUI.Box(rect, GUIContent.none, cardStyle);
                 GUI.color = oldColor;
+                // The browser's .pgod: the face sits at the left of the tile, greyed and dimmed
+                // until the god is unlocked (.gport{filter:grayscale(85%);opacity:.55}), full colour
+                // once they are. IMGUI cannot desaturate a texture, so a locked face is tinted grey
+                // and faded instead — the same message by the means available.
+                var portrait = Art.Portrait(view.Key);
+                float face = Mathf.Min(rect.height - 6f, 26f);
+                var faceRect = new Rect(rect.x + 3f, rect.y + (rect.height - face) * 0.5f, face, face);
+                if (portrait != null)
+                {
+                    GUI.color = view.Unlocked ? Color.white : new Color(0.62f, 0.62f, 0.66f, 0.55f);
+                    GUI.DrawTexture(faceRect, portrait, ScaleMode.ScaleAndCrop);
+                    GUI.color = oldColor;
+                }
+                var labelRect = new Rect(faceRect.xMax + 3f, rect.y, rect.xMax - faceRect.xMax - 6f, rect.height);
+                GUI.Label(portrait != null ? labelRect : rect, view.Label, small);
                 bool usable = state.Live && !controller.Paused && draft == null;
                 if (usable && evt.type == EventType.MouseDown && evt.button == 0 && rect.Contains(evt.mousePosition))
                 {
