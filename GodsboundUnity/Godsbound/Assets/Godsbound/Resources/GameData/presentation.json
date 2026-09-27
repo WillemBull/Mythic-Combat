@@ -1468,6 +1468,28 @@
       "resource": "GodArt/leigong"
     }
   ],
+  "uiArt": [
+    {
+      "key": "menu",
+      "source": "assets/sprites/menu_bg_pantheon_passage.png",
+      "resource": "UiArt/menu"
+    },
+    {
+      "key": "arena_egypt",
+      "source": "assets/sprites/arena_bg_egypt.jpg",
+      "resource": "UiArt/arena_egypt"
+    },
+    {
+      "key": "arena_china",
+      "source": "assets/sprites/arena_bg_china.jpg",
+      "resource": "UiArt/arena_china"
+    },
+    {
+      "key": "arena_aztec",
+      "source": "assets/sprites/arena_bg_aztec.jpg",
+      "resource": "UiArt/arena_aztec"
+    }
+  ],
   "powerHints": [
     {
       "key": "horus",
@@ -1593,5 +1615,11 @@
       "key": "itzpapalotl",
       "text": "Damage and slow nearby enemies."
     }
+  ],
+  "menuScrim": [
+    0.42,
+    0.18,
+    0.7,
+    0.92
   ]
 }

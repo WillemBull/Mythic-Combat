@@ -3,6 +3,7 @@ using UnityEngine;
 using Godsbound.Core;
 using Godsbound.Core.Decks;
 using Godsbound.Core.Setup;
+using Godsbound.Data;
 
 namespace Godsbound.Presentation.Setup
 {
@@ -20,10 +21,38 @@ namespace Godsbound.Presentation.Setup
     [RequireComponent(typeof(SetupController))]
     public sealed class SetupHud : MonoBehaviour
     {
-        public const float TitleHeight = 34f, RowHeight = 30f, Pad = 6f;
+        public const float TitleHeight = 34f, RowHeight = 44f, Pad = 6f;
         private SetupController controller;
         private GUIStyle title, body, tile;
         private Vector2 scroll;
+        private UnitArtCatalog art;
+        private Texture2D scrim;
+
+        /// <summary>
+        /// Which steps are about the BOARD. Only the terrain step is: it is where you build your
+        /// half, so the board belongs on screen. The rest — the hub, the pantheon, the gods, the
+        /// heroes, the cards — are menus, and until U42 they were drawn as a small panel floating
+        /// over the arena, which is exactly what they looked like: a debug overlay on a game.
+        /// </summary>
+        public static bool ShowsBoard(SetupStep step) => step == SetupStep.Terrain;
+
+        /// <summary>A menu step's content area: the whole screen under the title, not a band.</summary>
+        public static Rect Sheet(float width, float height)
+        {
+            var bar = Title(width, height);
+            return new Rect(Pad * 2f, bar.yMax, width - Pad * 4f, height - bar.yMax - Pad * 3f);
+        }
+
+        /// <summary>
+        /// The face of a pantheon: the first god the database lists for it. A rule rather than a
+        /// taste — the browser has arena art for only three of the four, so a portrait is the one
+        /// image every pantheon is guaranteed to have.
+        /// </summary>
+        public static string FaceOf(Godsbound.Core.Data.GameDatabase db, string faction)
+        {
+            foreach (var god in db.GodsOf(faction)) return god.key;
+            return null;
+        }
 
         private SetupSession Session => controller != null ? controller.Session : null;
 
@@ -47,6 +76,32 @@ namespace Godsbound.Presentation.Setup
         /// <summary>The counter a picking step shows: "2/4".</summary>
         public static string Counter(int picked, int cap) => $"{picked}/{cap}";
 
+        private void EnsureArt()
+        {
+            if (art != null) return;
+            art = new UnitArtCatalog(PresentationData.Load());
+            // The browser's four-stop scrim, built once as a 1x64 ramp and stretched. IMGUI has no
+            // gradient of its own, and a flat tint either drowns the painting or loses the text.
+            var stops = art.Data.menuScrim ?? new[] { 0.42f, 0.18f, 0.70f, 0.92f };
+            var at = new[] { 0f, 0.38f, 0.75f, 1f };
+            scrim = new Texture2D(1, 64) { wrapMode = TextureWrapMode.Clamp, hideFlags = HideFlags.DontSave };
+            for (int y = 0; y < 64; y++)
+            {
+                float t = 1f - y / 63f;                 // texture rows run bottom-up; the panel reads top-down
+                int i = 0; while (i < at.Length - 2 && t > at[i + 1]) i++;
+                float span = Mathf.Max(0.0001f, at[i + 1] - at[i]);
+                float a = Mathf.Lerp(stops[i], stops[i + 1], (t - at[i]) / span);
+                scrim.SetPixel(0, y, new Color(3f / 255f, 7f / 255f, 10f / 255f, a));
+            }
+            scrim.Apply();
+        }
+
+        private void OnDestroy()
+        {
+            art?.Dispose();
+            if (scrim != null) UnitArtCatalog.Release(scrim);
+        }
+
         private void Styles()
         {
             if (title != null) return;
@@ -59,8 +114,13 @@ namespace Godsbound.Presentation.Setup
         {
             if (Session == null) return;
             Styles();
+            EnsureArt();
+            // A menu is a screen, not a panel floating over the arena (U42). The board stays for the
+            // one step that is about the board.
+            bool board = ShowsBoard(Session.Step);
             var titleBar = Title(Screen.width, Screen.height);
-            var controls = Controls(Screen.width, Screen.height);
+            var controls = board ? Controls(Screen.width, Screen.height) : Sheet(Screen.width, Screen.height);
+            if (!board) DrawBackdrop();
             GUI.Label(titleBar, Heading(), title);
             if (!string.IsNullOrEmpty(Session.Hint))
                 GUI.Label(new Rect(0f, titleBar.yMax - 16f, Screen.width, 16f), Session.Hint, body);
@@ -79,7 +139,22 @@ namespace Godsbound.Presentation.Setup
                 default: DrawHome(); break;
             }
             GUILayout.EndArea();
-            if (Session.Step == SetupStep.Terrain) HandleBoard();
+            if (board) HandleBoard();
+        }
+
+        /// <summary>
+        /// The menu's own backdrop — the browser's #menupanel.home-active painting under its scrim.
+        /// Drawn over the whole screen, which is what takes the menu out of the arena: the board is
+        /// still behind it, framed exactly as the battle camera frames it, so nothing can drift out
+        /// of step the way U33 feared when it made these three scenes identical.
+        /// </summary>
+        private void DrawBackdrop()
+        {
+            var full = new Rect(0f, 0f, Screen.width, Screen.height);
+            var painting = art.Screen("menu");
+            if (painting != null) GUI.DrawTexture(full, painting, ScaleMode.ScaleAndCrop);
+            else { var was = GUI.color; GUI.color = new Color(0.02f, 0.03f, 0.04f); GUI.DrawTexture(full, Texture2D.whiteTexture); GUI.color = was; }
+            if (scrim != null) GUI.DrawTexture(full, scrim, ScaleMode.StretchToFill);
         }
 
         private string Heading()
@@ -116,18 +191,42 @@ namespace Godsbound.Presentation.Setup
             if (tutorial != Godsbound.Data.GameSettings.Tutorial) Godsbound.Data.GameSettings.Tutorial = tutorial;
         }
 
+        /// <summary>
+        /// Four illustrated panels, two by two, each carrying its pantheon's face. The old version
+        /// was four grey buttons with lower-case words on them, which told a new player nothing
+        /// about what they were choosing between.
+        /// </summary>
         private void DrawFaction()
         {
-            GUILayout.BeginHorizontal();
-            foreach (var faction in controller.Store == null ? new string[0]
-                     : new[] { "egypt", "china", "greek", "aztec" })
+            var db = GameDataLoader.Load();   // cached after the first call; the faces are looked up once per frame
+            var factions = new[] { "egypt", "china", "greek", "aztec" };
+            var names = new[] { "EGYPT", "CHINA", "GREECE", "AZTEC" };
+            float w = (Screen.width - Pad * 6f) * 0.5f;
+            float h = Mathf.Max(96f, (Sheet(Screen.width, Screen.height).height - RowHeight * 2f - Pad * 6f) * 0.5f);
+            for (int row = 0; row < 2; row++)
             {
-                bool chosen = Session.Faction == faction;
-                GUI.color = chosen ? Color.yellow : Color.white;
-                if (GUILayout.Button(faction, tile, GUILayout.Height(RowHeight * 1.4f))) Session.ChooseFaction(faction);
-                GUI.color = Color.white;
+                GUILayout.BeginHorizontal();
+                for (int col = 0; col < 2; col++)
+                {
+                    int i = row * 2 + col;
+                    var rect = GUILayoutUtility.GetRect(w, h, GUILayout.Width(w), GUILayout.Height(h));
+                    bool chosen = Session.Faction == factions[i];
+                    var face = art.Portrait(FaceOf(db, factions[i]));
+                    if (face != null) GUI.DrawTexture(rect, face, ScaleMode.ScaleAndCrop);
+                    if (scrim != null) GUI.DrawTexture(rect, scrim, ScaleMode.StretchToFill);
+                    var was = GUI.color;
+                    GUI.color = chosen ? new Color(1f, 0.85f, 0.35f) : new Color(0.75f, 0.78f, 0.86f);
+                    GUI.Label(new Rect(rect.x, rect.yMax - 26f, rect.width, 22f), names[i], title);
+                    GUI.color = was;
+                    // A chosen pantheon is outlined, not merely tinted: the painting behind it is
+                    // busy enough that a colour shift alone reads as a trick of the art.
+                    if (chosen) GUI.Box(rect, GUIContent.none);
+                    if (GUI.Button(rect, GUIContent.none, GUIStyle.none)) Session.ChooseFaction(factions[i]);
+                }
+                GUILayout.EndHorizontal();
+                GUILayout.Space(Pad);
             }
-            GUILayout.EndHorizontal();
+            GUILayout.FlexibleSpace();
             if (GUILayout.Button("Gods →", GUILayout.Height(RowHeight))) Session.Go(SetupStep.Gods);
             if (GUILayout.Button("← Menu", GUILayout.Height(RowHeight))) Session.Go(SetupStep.Home);
         }

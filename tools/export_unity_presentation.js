@@ -18,7 +18,21 @@ const sprites=spriteFlag>=0?path.resolve(process.argv[spriteFlag+1]):path.join(r
 if(!fs.existsSync(sprites))throw Error("No sprite directory at "+sprites+" — pass --sprites <path to assets/sprites>");
 /* God portraits ride along with the unit art: same rule (must live under assets/sprites), same
    .meta handling, but they keep their own extension because GOD_PORTRAITS is jpg. */
-for(const entry of [...globalThis.__presentation.art,...globalThis.__presentation.godArt]){
+/* The menu background is named only in #menupanel's stylesheet, so it is read from there rather
+   than hard-coded: restyle that panel and this export fails loudly instead of shipping a stale
+   filename. Done HERE, at module scope, not in the driver — inside the eval'd game, `src` is the
+   game's own variable, not this file's copy of the HTML, and a regex literal's escapes do not
+   survive the eval either (HANDOFF records that trap for the other exporters). */
+{
+  const marker='url("assets/sprites/menu_bg';
+  // stub_dom's `src` is the extracted SCRIPT, not the stylesheet, so the CSS is read from the file.
+  const html=fs.readFileSync(path.join(root,"godsbound_beta.html"),"utf8");
+  const at=html.indexOf(marker);
+  if(at<0)throw Error("Menu background not found in #menupanel's stylesheet");
+  const from=html.indexOf('"',at)+1;
+  globalThis.__presentation.uiArt.unshift({key:"menu",source:html.slice(from,html.indexOf('"',from)),resource:"UiArt/menu"});
+}
+for(const entry of [...globalThis.__presentation.art,...globalThis.__presentation.godArt,...globalThis.__presentation.uiArt]){
   // entry.source is the browser's own relative path, e.g. assets/sprites/foo.png.
   const source=path.join(sprites,path.basename(entry.source));
   if(!fs.existsSync(source))throw Error("Missing art: "+entry.source+" (looked in "+sprites+")");
@@ -67,13 +81,13 @@ TextureImporter:
 }
 fs.writeFileSync(path.join(assets,"Resources/GameData/presentation.json"),JSON.stringify(globalThis.__presentation,null,2)+"\n");
 fs.writeFileSync(path.join(assets,"Tests/EditMode/Fixtures/deployment_reference.json"),JSON.stringify(globalThis.__deployment,null,2)+"\n");
-console.log("Exported "+globalThis.__presentation.art.length+" unit images, "+globalThis.__presentation.godArt.length+" god portraits and "+globalThis.__deployment.cases.length+" drag cases");
+console.log("Exported "+globalThis.__presentation.art.length+" unit images, "+globalThis.__presentation.godArt.length+" god portraits, "+globalThis.__presentation.uiArt.length+" screen images and "+globalThis.__deployment.cases.length+" drag cases");
 if(false){
 /*DRIVER*/
 code+=`
 ;(function(){
   startMatch();
-  const data={source:"godsbound_beta.html",food:S.food,favor:S.favor,aiFood:S.aiFood,aiFavor:S.aiFavor,anchorDown:0.42,handSize:HAND_SIZE,art:[],godArt:[],
+  const data={source:"godsbound_beta.html",food:S.food,favor:S.favor,aiFood:S.aiFood,aiFavor:S.aiFavor,anchorDown:0.42,handSize:HAND_SIZE,art:[],godArt:[],uiArt:[],
     powerHints:Object.keys(POWER_HINTS).map(k=>({key:k,text:POWER_HINTS[k]}))};
   for(const [key,def] of Object.entries(ALL_UNITS))for(const side of [0,1]){
     const entry=IMG_SPRITES[key],file=typeof entry==="object"?entry[side]:entry;
@@ -84,6 +98,19 @@ code+=`
      filename convention — the table is the truth, and a god that is missing from it should show
      up here as a missing portrait, not as a guessed path that happens to 404. */
   for(const [key,file] of Object.entries(GOD_PORTRAITS)) data.godArt.push({key,source:file,resource:"GodArt/"+key});
+  /* SCREEN ART (U42). The menu background is named only in the stylesheet — #menupanel.home-active
+     — so it is read from there rather than hard-coded here; if the game restyles that panel, this
+     export fails loudly instead of shipping a stale filename. The arena backdrops come from
+     IMG_SPRITES, which has three: Greece has never had one. */
+  /* The scrim the browser lays over that background so the panel's text stays readable, taken from
+     the same rule: four stops of rgba(3,7,10,a). Ported as the alphas, because a gradient is the
+     only thing standing between white text and a busy painting. */
+  data.menuScrim=[0.42,0.18,0.70,0.92];
+  for(const faction of ["egypt","china","aztec"]){
+    const file=IMG_SPRITES["arena_bg_"+faction];
+    if(!file)throw Error("No arena backdrop for "+faction);
+    data.uiArt.push({key:"arena_"+faction,source:file,resource:"UiArt/arena_"+faction});
+  }
   // Verify the anchor against the draw implementation rather than silently drifting.
   const anchor=drawUnitSprite.toString().match(/p.y\\+HEX\\*([0-9.]+)/);
   if(!anchor)throw Error("Sprite anchor expression changed");data.anchorDown=Number(anchor[1]);

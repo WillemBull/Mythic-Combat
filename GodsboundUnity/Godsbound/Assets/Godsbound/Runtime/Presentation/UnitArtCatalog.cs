@@ -13,6 +13,8 @@ namespace Godsbound.Presentation
     }
     /// <summary>One god's face, from the browser's GOD_PORTRAITS table (U41).</summary>
     [Serializable] public sealed class GodArtEntry { public string key, resource; }
+    /// <summary>A whole-screen image: the menu backdrop, or a pantheon's arena (U42).</summary>
+    [Serializable] public sealed class UiArtEntry { public string key, source, resource; }
     [Serializable] public sealed class PowerHint { public string key, text; }
     [Serializable] public sealed class PresentationData
     {
@@ -26,6 +28,13 @@ namespace Godsbound.Presentation
         public UnitArtEntry[] art;
         /// <summary>The 42 god portraits. A god missing from here draws as text, never as a hole.</summary>
         public GodArtEntry[] godArt;
+        /// <summary>Screen art: "menu", and "arena_egypt"/"arena_china"/"arena_aztec". Greece has none.</summary>
+        public UiArtEntry[] uiArt;
+        /// <summary>
+        /// The browser's scrim over the menu backdrop — four alphas of rgba(3,7,10,a) at 0%, 38%,
+        /// 75% and 100% down the panel. Without it, white text sits on a busy painting.
+        /// </summary>
+        public float[] menuScrim;
         public static PresentationData Load() => JsonUtility.FromJson<PresentationData>(
             Resources.Load<TextAsset>("GameData/presentation").text);
     }
@@ -59,6 +68,15 @@ namespace Godsbound.Presentation
             return portraits[entry.resource] = Resources.Load<Texture2D>(entry.resource);
         }
         private readonly Dictionary<string, Texture2D> portraits = new Dictionary<string, Texture2D>();
+
+        /// <summary>A screen image by key, or null when the browser never had one (Greece's arena).</summary>
+        public Texture2D Screen(string key)
+        {
+            var entry = Array.Find(Data.uiArt ?? Array.Empty<UiArtEntry>(), e => e.key == key);
+            if (entry == null) return null;
+            if (portraits.TryGetValue(entry.resource, out var cached)) return cached;
+            return portraits[entry.resource] = Resources.Load<Texture2D>(entry.resource);
+        }
 
         public void Dispose()
         {
