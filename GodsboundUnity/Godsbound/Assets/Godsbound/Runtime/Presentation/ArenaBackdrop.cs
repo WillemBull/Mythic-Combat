@@ -71,7 +71,12 @@ namespace Godsbound.Presentation
         public static bool NeutralBand(HexLayout layout, out float top, out float bottom)
         {
             top = bottom = 0f;
-            if (Board.NeutralRows < 1) return false;
+            // Read into a local first. Board.NeutralRows is a const, so comparing it directly folds
+            // to a constant and the compiler calls the guard unreachable — which it is, TODAY. The
+            // guard is here for the day the band is set to zero, exactly as the browser keeps its
+            // own `if(NEUTRAL_ROWS<1) return null`, and deleting it would make that day silent.
+            int rows = Board.NeutralRows;
+            if (rows < 1) return false;
             float half = layout.Hex * HexLayout.Sqrt3 * 0.5f;
             bool any = false;
             for (int c = 0; c < Board.Cols; c++)
