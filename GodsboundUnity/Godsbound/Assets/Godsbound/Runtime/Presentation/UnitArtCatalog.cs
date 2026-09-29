@@ -30,6 +30,8 @@ namespace Godsbound.Presentation
         public GodArtEntry[] godArt;
         /// <summary>Screen art: "menu", and "arena_egypt"/"arena_china"/"arena_aztec". Greece has none.</summary>
         public UiArtEntry[] uiArt;
+        /// <summary>The special-tile paintings: water, forest, mountain, bamboo (U43).</summary>
+        public UiArtEntry[] terrainArt;
         /// <summary>
         /// The browser's scrim over the menu backdrop — four alphas of rgba(3,7,10,a) at 0%, 38%,
         /// 75% and 100% down the panel. Without it, white text sits on a busy painting.
@@ -68,6 +70,15 @@ namespace Godsbound.Presentation
             return portraits[entry.resource] = Resources.Load<Texture2D>(entry.resource);
         }
         private readonly Dictionary<string, Texture2D> portraits = new Dictionary<string, Texture2D>();
+
+        /// <summary>A special tile's painting by key, read from the exported table rather than a path.</summary>
+        public Texture2D Tile(string key)
+        {
+            var entry = Array.Find(Data.terrainArt ?? Array.Empty<UiArtEntry>(), e => e.key == key);
+            if (entry == null) return null;
+            if (portraits.TryGetValue(entry.resource, out var cached)) return cached;
+            return portraits[entry.resource] = Resources.Load<Texture2D>(entry.resource);
+        }
 
         /// <summary>A screen image by key, or null when the browser never had one (Greece's arena).</summary>
         public Texture2D Screen(string key)

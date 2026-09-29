@@ -32,7 +32,7 @@ if(!fs.existsSync(sprites))throw Error("No sprite directory at "+sprites+" — p
   const from=html.indexOf('"',at)+1;
   globalThis.__presentation.uiArt.unshift({key:"menu",source:html.slice(from,html.indexOf('"',from)),resource:"UiArt/menu"});
 }
-for(const entry of [...globalThis.__presentation.art,...globalThis.__presentation.godArt,...globalThis.__presentation.uiArt]){
+for(const entry of [...globalThis.__presentation.art,...globalThis.__presentation.godArt,...globalThis.__presentation.uiArt,...globalThis.__presentation.terrainArt]){
   // entry.source is the browser's own relative path, e.g. assets/sprites/foo.png.
   const source=path.join(sprites,path.basename(entry.source));
   if(!fs.existsSync(source))throw Error("Missing art: "+entry.source+" (looked in "+sprites+")");
@@ -81,13 +81,13 @@ TextureImporter:
 }
 fs.writeFileSync(path.join(assets,"Resources/GameData/presentation.json"),JSON.stringify(globalThis.__presentation,null,2)+"\n");
 fs.writeFileSync(path.join(assets,"Tests/EditMode/Fixtures/deployment_reference.json"),JSON.stringify(globalThis.__deployment,null,2)+"\n");
-console.log("Exported "+globalThis.__presentation.art.length+" unit images, "+globalThis.__presentation.godArt.length+" god portraits, "+globalThis.__presentation.uiArt.length+" screen images and "+globalThis.__deployment.cases.length+" drag cases");
+console.log("Exported "+globalThis.__presentation.art.length+" unit images, "+globalThis.__presentation.godArt.length+" god portraits, "+globalThis.__presentation.uiArt.length+" screen images, "+globalThis.__presentation.terrainArt.length+" terrain tiles and "+globalThis.__deployment.cases.length+" drag cases");
 if(false){
 /*DRIVER*/
 code+=`
 ;(function(){
   startMatch();
-  const data={source:"godsbound_beta.html",food:S.food,favor:S.favor,aiFood:S.aiFood,aiFavor:S.aiFavor,anchorDown:0.42,handSize:HAND_SIZE,art:[],godArt:[],uiArt:[],
+  const data={source:"godsbound_beta.html",food:S.food,favor:S.favor,aiFood:S.aiFood,aiFavor:S.aiFavor,anchorDown:0.42,handSize:HAND_SIZE,art:[],godArt:[],uiArt:[],terrainArt:[],
     powerHints:Object.keys(POWER_HINTS).map(k=>({key:k,text:POWER_HINTS[k]}))};
   for(const [key,def] of Object.entries(ALL_UNITS))for(const side of [0,1]){
     const entry=IMG_SPRITES[key],file=typeof entry==="object"?entry[side]:entry;
@@ -106,6 +106,16 @@ code+=`
      the same rule: four stops of rgba(3,7,10,a). Ported as the alphas, because a gradient is the
      only thing standing between white text and a busy painting. */
   data.menuScrim=[0.42,0.18,0.70,0.92];
+  /* The four special-tile paintings drawSpecialTile uses. All four are RGBA already, so the
+     browser's chromaKeyed() takes its "already-transparent source" branch and does nothing —
+     which is why Unity needs no keying step either. Every one is a hexagon drawn inscribed in a
+     square canvas, touching the left and right edges, so the view sizes them by WIDTH. */
+  for(const [key,sprite] of [["water","terrain_shared_water"],["forest","terrain_shared_forest"],
+                             ["mountain","terrain_shared_mountain"],["bamboo","terrain_chinese_bamboo"]]){
+    const file=IMG_SPRITES[sprite];
+    if(!file)throw Error("No terrain art registered for "+sprite);
+    data.terrainArt.push({key,source:file,resource:"TerrainArt/"+key});
+  }
   for(const faction of ["egypt","china","aztec"]){
     const file=IMG_SPRITES["arena_bg_"+faction];
     if(!file)throw Error("No arena backdrop for "+faction);

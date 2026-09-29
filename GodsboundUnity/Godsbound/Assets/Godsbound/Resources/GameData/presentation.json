@@ -1490,6 +1490,28 @@
       "resource": "UiArt/arena_aztec"
     }
   ],
+  "terrainArt": [
+    {
+      "key": "water",
+      "source": "assets/sprites/terrain_shared_water.png",
+      "resource": "TerrainArt/water"
+    },
+    {
+      "key": "forest",
+      "source": "assets/sprites/terrain_shared_forest.png",
+      "resource": "TerrainArt/forest"
+    },
+    {
+      "key": "mountain",
+      "source": "assets/sprites/terrain_shared_mountain.png",
+      "resource": "TerrainArt/mountain"
+    },
+    {
+      "key": "bamboo",
+      "source": "assets/sprites/terrain_chinese_bamboo.png",
+      "resource": "TerrainArt/bamboo"
+    }
+  ],
   "powerHints": [
     {
       "key": "horus",

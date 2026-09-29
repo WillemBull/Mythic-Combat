@@ -84,6 +84,16 @@ namespace Godsbound.Presentation
             buildings = buildingsView != null ? buildingsView : FindAnyObjectByType<BuildingsView>();
             units = GetComponent<UnitsView>() ?? gameObject.AddComponent<UnitsView>();
             hits = GetComponent<DamageNumbers>() ?? gameObject.AddComponent<DamageNumbers>();
+            // U43: the arena each half is fought over, and the row-to-pantheon rule the board needs
+            // to know whether a forest is bamboo.
+            if (board != null)
+            {
+                board.FactionOfRow = row => row < Board.PlayerRow0 ? AiFaction : Deck.faction;
+                var backdrop = board.GetComponent<ArenaBackdropView>()
+                               ?? board.gameObject.AddComponent<ArenaBackdropView>();
+                backdrop.Bind(Deck.faction, AiFaction);
+                board.Rebuild();
+            }
             if (GetComponent<PowerFx>() == null) gameObject.AddComponent<PowerFx>();
             // The AI's casts start in Core, so nothing in the UI would show them. BattleHud already
             // draws the player's own (it knows the aim before the cast), so only the other side's
