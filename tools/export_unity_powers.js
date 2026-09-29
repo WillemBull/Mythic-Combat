@@ -224,7 +224,11 @@ code+=`
     units:[E(1,"spear",4,4,{invisible:true}),E(1,"archer",4,5,{despawn:99}),E(1,"axe",5,5,{conscript:{side:0,until:40}}),E(0,"ji",4,9,{invisible:true}),E(0,"ji",3,3,{conscript:{side:1,until:40}})],ticks:2});
   cast("third eye by the AI","chinaAI","erlangshen",P(0,0),{pick:["erlangshen","jade","nuwa","longwang"]});
   cast("garden of kunlun","china","xiwangmu",P(4,8),{pick:["xiwangmu","jade","nuwa","longwang"],
-    terrain:[T(4,8,"R"),T(3,8,"F"),T(5,8,"W"),T(4,9,"H"),T(4,7,"D")],ticks:18});
+    // The point of this spread is that the grove takes OPEN GROUND ONLY and never overrides a
+    // feature. It used to plant R on the cast hex, H next to it and D as the open-ground probe;
+    // Road, High Ground and Desert were removed 2026-09-28, so the features are now W/F/M and
+    // the probe is P (redundant against the all-P base map, but the intent stays visible).
+    terrain:[T(4,8,"W"),T(3,8,"F"),T(5,8,"W"),T(4,9,"M"),T(4,7,"P")],ticks:18});
   cast("garden no soil","china","xiwangmu",P(4,4),{pick:["xiwangmu","jade","nuwa","longwang"],terrain:block(2,6,2,6,"M")});
   cast("primordial fire","china","zhurong",P(4,5),{pick:["zhurong","jade","nuwa","longwang"],
     units:[E(1,"spear",4,5,{hp:30}),E(0,"ji",4,6),E(1,"archer",4,7,{invuln:33}),E(1,"axe",4,8)],ticks:14});
@@ -273,7 +277,7 @@ code+=`
   cast("wind serpent wipes routes","aztec","quetzalcoatl",P(4,4),{pick:AP,
     units:[E(1,"spear",4,4,{path:[[4,5],[4,6]],pathIdx:1}),E(1,"bata_tree",3,4),E(0,"jaguar",4,10,{path:[[4,9]]})]});
   cast("wind serpent with nobody to push","aztec","quetzalcoatl",P(4,4),{pick:AP});
-  cast("the weeping rain","aztec","tlaloc",P(4,5),{pick:AP2,terrain:[T(4,5,"M"),T(5,5,"W"),T(3,5,"D")],ticks:18});
+  cast("the weeping rain","aztec","tlaloc",P(4,5),{pick:AP2,terrain:[T(4,5,"M"),T(5,5,"W"),T(3,5,"P")],ticks:18}); // "D" was Desert, removed 2026-09-28
   cast("the weeping rain over a wall","aztec","tlaloc",P(4,11),{pick:AP2});
   cast("smoking mirror","aztec","tezcatlipoca",P(4,5),{pick:AP,units:[E(1,"spear",4,5,{hp:60}),E(1,"archer",4,4)],ticks:2});
   cast("smoking mirror on a crowded hex","aztec","tezcatlipoca",P(4,5),{pick:AP,

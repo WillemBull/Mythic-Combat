@@ -55,7 +55,8 @@ namespace Godsbound.Core.Setup
         public string Faction { get; private set; }
         public BoardHalf Half { get; private set; }
 
-        /// <summary>The paint brush, or 0 for none. 'D' is the eraser, as in the browser.</summary>
+        /// <summary>The paint brush, or 0 for none. 'P' is the eraser, as in the browser
+        /// (it was 'D' until Desert was removed on 2026-09-28).</summary>
         public char Brush { get; private set; }
 
         /// <summary>The last thing setup said to the player. Presentation shows it; nothing reads it back.</summary>

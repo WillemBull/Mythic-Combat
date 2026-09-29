@@ -28,16 +28,28 @@ namespace Godsbound.Tests
             }
         }
 
-        /// <summary>Plains and Desert are faction-themed skins of the same tile.</summary>
+        /// <summary>
+        /// 'D' was Desert, removed on 2026-09-28 for being Plains with a different fill colour.
+        /// The code is still parsed, as Plains, so a deck saved before the removal loads instead
+        /// of throwing. This replaces the old PlainsAndDesert_AreMechanicallyIdentical test,
+        /// which asserted the sameness that made the removal safe in the first place.
+        /// </summary>
         [Test]
-        public void PlainsAndDesert_AreMechanicallyIdentical()
+        public void LegacyDesertCode_ReadsAsPlains()
         {
-            var p = TerrainTable.Info(TerrainType.Plains);
-            var d = TerrainTable.Info(TerrainType.Desert);
-            Assert.AreEqual(p.Speed, d.Speed, 1e-6f);
-            Assert.AreEqual(p.Block, d.Block);
-            Assert.AreEqual(p.Cover, d.Cover, 1e-6f);
-            Assert.AreEqual(p.HighGround, d.HighGround);
+            Assert.AreEqual(TerrainType.Plains, TerrainTable.FromCode('D'));
+        }
+
+        /// <summary>The removed codes are gone from the table, not merely unused.</summary>
+        [Test]
+        public void RemovedTerrainCodes_AreNotInTheTable()
+        {
+            var codes = TerrainTable.AllTypes.Select(t => TerrainTable.Info(t).Code).ToArray();
+            Assert.AreEqual(new[] { 'P', 'F', 'M', 'W' }, codes, "the whole terrain vocabulary");
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => TerrainTable.FromCode('R'),
+                "Road: never painted, never shipped, and the deck validator always refused it");
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => TerrainTable.FromCode('H'),
+                "High Ground: likewise");
         }
 
         [Test]
@@ -66,8 +78,8 @@ namespace Godsbound.Tests
 
         /// <summary>
         /// Passability for every terrain code, against values the browser game itself
-        /// produced by planting each code on a scratch hex. The base map contains only
-        /// Plains and Desert, so the per-cell sweep below can never exercise a mountain —
+        /// produced by planting each code on a scratch hex. The base map is all Plains, so
+        /// the per-cell sweep below can never exercise a mountain —
         /// and blocking terrain is the entire point of the rule. This covers it.
         /// </summary>
         [Test]
@@ -171,7 +183,7 @@ namespace Godsbound.Tests
         {
             var map = new TerrainMap();
             Assert.Throws<System.ArgumentOutOfRangeException>(() => { var _ = map[-1, 0]; });
-            Assert.Throws<System.ArgumentOutOfRangeException>(() => { map[0, Board.Rows] = TerrainType.Road; });
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => { map[0, Board.Rows] = TerrainType.Forest; });
         }
     }
 }

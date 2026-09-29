@@ -108,7 +108,7 @@ namespace Godsbound.Tests
             Assert.That(session.Remaining('F'), Is.EqualTo(db.TerrainBudget('F') - 1));
             session.ChooseBrush('F');
             Assert.That(session.Brush, Is.EqualTo('\0'), "the same brush again puts it down");
-            session.ChooseBrush('D');
+            session.ChooseBrush('P'); // 'P' is the eraser; it was 'D' until Desert was removed
             Assert.That(session.PaintAt(new Hex(0, 0)), Is.True, "erased");
             Assert.That(session.Remaining('F'), Is.EqualTo(db.TerrainBudget('F')));
             session.ChooseBrush('M');

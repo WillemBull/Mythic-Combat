@@ -48,8 +48,8 @@ namespace Godsbound.Presentation
         public static readonly Color NeutralShade = new Color(0.02f, 0.03f, 0.06f, 0.38f);
 
         /// <summary>
-        /// Which painting a hex wears, or null for the four codes the browser draws nothing for —
-        /// Plains, Desert, Road and High Ground are the arena photograph itself.
+        /// Which painting a hex wears, or null for Plains, the one code the browser draws nothing
+        /// for — bare ground is the arena photograph itself.
         /// Forest is bamboo on China's side of the board, as <c>drawSpecialTile</c> resolves it.
         /// </summary>
         public static string TileArt(TerrainType terrain, int row, string factionOfRow) =>

@@ -267,8 +267,9 @@ namespace Godsbound.Tests
             terrain[a] = TerrainType.Water;
             Assert.IsFalse(BuildingPlacement.CanPlace(a, b, terrain, empty), "no building on water");
 
-            foreach (var t in new[] { TerrainType.Plains, TerrainType.Desert, TerrainType.Forest,
-                                      TerrainType.Road, TerrainType.HighGround })
+            // Desert, Road and High Ground were removed on 2026-09-28, so this is now every
+            // non-blocking code there is.
+            foreach (var t in new[] { TerrainType.Plains, TerrainType.Forest })
             {
                 terrain[a] = t;
                 Assert.IsTrue(BuildingPlacement.CanPlace(a, b, terrain, empty),

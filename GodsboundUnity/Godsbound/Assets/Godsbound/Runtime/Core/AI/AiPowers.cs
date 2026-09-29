@@ -125,7 +125,7 @@ namespace Godsbound.Core.AI
 
         private static bool HasSoil(MatchState state, AiRules rules, Hex hex) =>
             Gods.Powers.ChinaPowers.HexesInRadius(hex, rules.soilRadius).Any(h =>
-                (state.Terrain[h] == TerrainType.Plains || state.Terrain[h] == TerrainType.Desert) &&
+                state.Terrain[h] == TerrainType.Plains && // Desert was the other soil code until 2026-09-28
                 state.Buildings.StandingAt(h) == null);
 
         /// <summary>

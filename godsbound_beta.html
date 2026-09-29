@@ -636,7 +636,7 @@ function toScreen(x,y){ const p=boardPivotY(); return {x, y:p+(y-p)*TILT_SQUASH}
 function fromScreen(x,y){ const p=boardPivotY(); return {x, y:p+(y-p)/TILT_SQUASH}; }
 
 /* ---------------- TERRAIN ----------------
-   P plain(china side) D desert F forest M mountain W water R road H high ground */
+   P plains (the one filler, both halves) F forest M mountain W water */
 const TMAP_INITIAL = [
  "PPPPPPPPP",
  "PPPPPPPPP",
@@ -645,24 +645,33 @@ const TMAP_INITIAL = [
  "PPPPPPPPP",
  "PPPPPPPPP",
  "PPPPPPPPP",
- "DDDDDDDDD",
- "DDDDDDDDD",
- "DDDDDDDDD",
- "DDDDDDDDD",
- "DDDDDDDDD",
- "DDDDDDDDD"
+ "PPPPPPPPP",
+ "PPPPPPPPP",
+ "PPPPPPPPP",
+ "PPPPPPPPP",
+ "PPPPPPPPP",
+ "PPPPPPPPP"
 ];
 let TMAP = TMAP_INITIAL.map(row=>[...row]);
 const terrain = (c,r)=> TMAP[r][c];
+/* 2026-09-28 (Willem): Desert, Road and High Ground are gone.
+   Road and High Ground were dead rows — nothing painted them, the starting map never
+   held one, the AI generator never made one, and loadDeck's validator already refused
+   them, so they only ever existed here.
+   Desert was real but indistinguishable: same speed as Plains, no block, no cover, and
+   the soil checks that look for bare ground accepted either. It was the filler tile for
+   the player's half and told apart from Plains only by a fill colour that U43 stopped
+   drawing when the board became an arena photograph. Every D is now a P; TERRAIN_MIGRATE
+   below carries saved decks across. */
 const TINFO = {
   P:{name:"Plains",   speed:1.0, fill:"#6f8a41", fill2:"#647d3a"},
-  D:{name:"Desert",   speed:1.0, fill:"#c7a15c", fill2:"#b99450"},
   F:{name:"Forest",   speed:0.75,fill:"#46672f", fill2:"#3e5d2b", cover:0.8},
   M:{name:"Mountain", speed:0,   fill:"#7b766d", fill2:"#6e6961", block:true},
-  W:{name:"Water",    speed:0.5, fill:"#2f7391", fill2:"#2a6884"},
-  R:{name:"Road",     speed:1.5, fill:"#a08a5c", fill2:"#957f53"},
-  H:{name:"High Ground",speed:0.85,fill:"#93905c",fill2:"#868353", highground:true}
+  W:{name:"Water",    speed:0.5, fill:"#2f7391", fill2:"#2a6884"}
 };
+/* A deck saved before that change still carries D tiles. They load as Plains rather than
+   being rejected, which is what they always were in play. */
+const TERRAIN_MIGRATE = ch => ch==="D" ? "P" : ch;
 const passable = (c,r,flying)=> flying ? true : !TINFO[terrain(c,r)].block;
 
 /* ---------------- UNIT DATA ---------------- */
@@ -1262,12 +1271,13 @@ function economyFor(side){
   const f=FACTIONS[factionForSide(side)];
   return Object.assign({},ECONOMY_DEFAULT,(f&&f.economy)||{});
 }
-/* TMAP_INITIAL's rows 0-5 use "P" and rows 6-11 use "D" as their blank/filler tile.
+/* TMAP_INITIAL is all "P" now: rows 6-11 used "D" as their blank/filler tile until Desert
+   was removed on 2026-09-28, and the two behaved identically in play.
    P and D are mechanically identical (same TINFO.speed, no other stats) — purely
    cosmetic. origTerrain() swaps that filler to whichever base the CURRENT faction on
    that half actually uses (desert for Egypt, plains for China), so a side's terrain
    always matches the faction playing it, not just its fixed row range. Any non-P/D
-   character (mountain/water/forest/road/high ground) passes through unchanged —
+   character (mountain/water/forest) passes through unchanged —
    TMAP_INITIAL itself ships with zero such characters as of 2026-07-16 (direct chat
    request, "no existing special tiles" — every match now starts on a fully flat
    desert/plains board), but the pass-through still matters for anything a player
@@ -1275,9 +1285,11 @@ function economyFor(side){
 function origTerrain(c,r){
   // No-man's land belongs to neither faction, so it never takes a faction filler.
   if(isNeutralRow(r)) return "P";
-  const base = factionForSide(r<AI_ROWS?1:0)==="egypt" ? "D" : "P";
+  // Egypt's half used to be filled with Desert and everyone else's with Plains. Desert is
+  // gone (2026-09-28) and the arena photograph is what tells the two halves apart now, so
+  // there is one filler left and no faction test to make.
   const ch = TMAP_INITIAL[r][c];
-  return (ch==="P"||ch==="D") ? base : ch;
+  return ch==="D" ? "P" : ch;
 }
 function deriveTMAP(){
   return TMAP_INITIAL.map((rowStr,r)=>rowStr.split("").map((ch,c)=>origTerrain(c,r)));
@@ -1604,7 +1616,8 @@ function deckStorage(){
 }
 function defaultDeckPreset(faction="egypt"){
   const f=FACTIONS[faction]||FACTIONS.egypt;
-  const validFaction=FACTIONS[faction]?faction:"egypt", base=validFaction==="egypt"?"D":"P";
+  const validFaction=FACTIONS[faction]?faction:"egypt";
+  const base="P";   // one filler since Desert was removed; see origTerrain
   return {
     faction:validFaction,
     loadout:[...f.defaultLoadout], heroes:[...f.defaultHeroes], gods:[...f.defaultGodPick],
@@ -1627,8 +1640,8 @@ function normalizeDeckPreset(raw){
   const gods=f.allGods.map(g=>g.key);
   if(!validPick(raw.loadout,4,humans)||!validPick(raw.heroes,2,heroes)||!validPick(raw.gods,4,gods)) return null;
   if(!Array.isArray(raw.terrain)||raw.terrain.length!==PLAYER_ROWS) return null;
-  const terrain=raw.terrain.map(row=>typeof row==="string"?[...row]:Array.isArray(row)?[...row]:[]);
-  if(terrain.some(row=>row.length!==COLS||row.some(ch=>!["P","D","F","M","W"].includes(ch)))) return null;
+  const terrain=raw.terrain.map(row=>(typeof row==="string"?[...row]:Array.isArray(row)?[...row]:[]).map(TERRAIN_MIGRATE));
+  if(terrain.some(row=>row.length!==COLS||row.some(ch=>!["P","F","M","W"].includes(ch)))) return null;
   const counts={F:0,M:0,W:0};
   terrain.flat().forEach(ch=>{if(ch in counts)counts[ch]++;});
   if(Object.keys(counts).some(k=>counts[k]>TERRAIN_BUDGET[k])) return null;
@@ -1904,7 +1917,10 @@ function paintTerrain(c,r,type){
   if(bldAt(c,r)) return false;
   const key=c+","+r, prevType=S.paintMap[key];
 
-  if(type==="D"){
+  /* "P" is the ERASE instruction, not a brush: the palette only ever paints F, M and W,
+     so asking for plain ground can only mean "put this hex back the way it was". It used
+     to be "D" for the same reason, until Desert stopped existing. */
+  if(type==="P"){
     if(prevType===undefined) return false; // nothing painted here to erase
     TMAP[r][c]=origTerrain(c,r+PLAYER_ROW0); // paintTerrain always operates on local (0..PLAYER_ROWS-1) rows; origTerrain expects absolute rows into TMAP_INITIAL
     S.painted[prevType]--;
@@ -3037,7 +3053,7 @@ document.addEventListener("pointerdown",e=>{
     const h=pixelToHex(p.x,p.y);
     const paintedKey=h && h[0]+","+h[1];
     if(S.phase==="setup" && h && S.paintMap[paintedKey]!==undefined){
-      paintTerrain(h[0],h[1],"D");
+      paintTerrain(h[0],h[1],"P");
       renderPalette();
       e.preventDefault(); return;
     }
@@ -5186,9 +5202,9 @@ function applyGodPower(casterSide,g,hex,pickedGod){
          is the Pantao on Mount Kunlun; Sun Wukong's most famous crime is raiding it.
 
          OPEN GROUND ONLY, and it never overrides other terrain (Willem). Open ground is
-         exactly P and D -- the two mechanically identical base tiles at speed 1.0 with no
-         other property. Every other code is a real feature and is skipped: F is already
-         forest, M blocks, W is water, R is the 1.5x road, H is high ground. Building hexes
+         exactly P, the one base tile at speed 1.0 with no other property (it was P and D
+         until Desert was removed). Every other code is a real feature and is skipped: F is
+         already forest, M blocks, W is water. Building hexes
          are skipped too. THIS IS THE POWER'S COUNTERPLAY AND IT IS DELIBERATE: an opponent
          who paints mountains, water and forest across their half denies her the ground, and
          the grove takes an irregular shape that flows around obstacles instead of stamping a
@@ -5200,7 +5216,7 @@ function applyGodPower(casterSide,g,hex,pickedGod){
          that grew it; see inGrove(). */
       let n=0;
       for(const [c,r] of hexesInRadius(hex,g.groveRadius||2)){
-        if(!["P","D"].includes(terrain(c,r)) || bldAt(c,r)) continue;
+        if(terrain(c,r)!=="P" || bldAt(c,r)) continue;
         S.floodedHexes.push({c,r,orig:terrain(c,r),to:"F",owner:casterSide,expiresAt:elapsed()+(g.groveDur||8)});
         TMAP[r][c]="F"; n++;
       }
@@ -5468,7 +5484,7 @@ function pickAiPowerHex(key){
        and fall back through nearby hexes until one has soil in range. */
     if(!aiUnits.length) return null;
     const spearhead=aiUnits.slice().sort((a,b)=>b.hex[1]-a.hex[1])[0]; // furthest DOWN the board = deepest into the player's half
-    const hasSoil=(h)=>hexesInRadius(h,2).some(([c,r])=>["P","D"].includes(terrain(c,r))&&!bldAt(c,r));
+    const hasSoil=(h)=>hexesInRadius(h,2).some(([c,r])=>terrain(c,r)==="P"&&!bldAt(c,r));
     if(hasSoil(spearhead.hex)) return spearhead.hex;
     const alt=aiUnits.map(u=>u.hex).find(hasSoil);
     return alt || null; // no soil anywhere near the army: hold the power rather than waste it

@@ -242,18 +242,21 @@ namespace Godsbound.Tests
         }
 
         [Test]
-        public void RoadsAreCheaperThanForestWhichIsCheaperThanWater()
+        /// <remarks>
+        /// This used to start with Road, the only terrain that made a step CHEAPER than plain
+        /// ground. Road was removed on 2026-09-28 (nothing ever painted one), so plain ground is
+        /// now the cheapest step there is and the ordering starts there.
+        /// </remarks>
+        public void PlainsIsCheaperThanForestWhichIsCheaperThanWater()
         {
             var t = new TerrainMap();
             var f = Finder(t);
             var h = new Hex(4, 4);
 
-            t[h] = TerrainType.Road; float road = f.StepCost(h, false);
             t[h] = TerrainType.Plains; float plains = f.StepCost(h, false);
             t[h] = TerrainType.Forest; float forest = f.StepCost(h, false);
             t[h] = TerrainType.Water; float water = f.StepCost(h, false);
 
-            Assert.Less(road, plains, "roads accelerate movement");
             Assert.Less(plains, forest, "forest slows");
             Assert.Less(forest, water, "water slows more");
         }
@@ -274,27 +277,33 @@ namespace Godsbound.Tests
         }
 
         /// <summary>
-        /// A road laid straight down the board should be preferred over open ground. Checked
-        /// as a tendency over many runs, not a single path, because of the jitter.
+        /// Terrain steers routes as a TENDENCY, not a rule. Checked over many runs rather than one
+        /// path, because of the jitter.
         /// </summary>
+        /// <remarks>
+        /// This was "a road attracts routes" until Road was removed on 2026-09-28. There is no
+        /// terrain faster than plain ground any more, so the same machinery is checked from the
+        /// other end: a slow lane laid along the straight line between the endpoints should push
+        /// most routes off it, without ever forbidding it.
+        /// </remarks>
         [Test]
-        public void ARoadAttractsRoutesWithoutBeingGuaranteed()
+        public void ASlowLaneRepelsRoutesWithoutForbiddingThem()
         {
             var t = new TerrainMap();
             const int col = 4;
-            for (int r = 0; r < Board.Rows; r++) t[col, r] = TerrainType.Road;
+            for (int r = 0; r < Board.Rows; r++) t[col, r] = TerrainType.Water;
 
-            int onRoad = 0;
+            int detoured = 0;
             const int runs = 25;
             for (int i = 0; i < runs; i++)
             {
                 var path = Finder(t, seed: i).FindPath(new Hex(col, 0), new Hex(col, 12), false);
-                Assert.IsNotNull(path);
-                if (path.All(h => h.C == col)) onRoad++;
+                Assert.IsNotNull(path, "the slow lane is still passable, so a route must exist");
+                if (path.Any(h => h.C != col)) detoured++;
             }
 
-            Assert.Greater(onRoad, runs / 2,
-                "most routes should stay on the road, even though jitter can divert some");
+            Assert.Greater(detoured, runs / 2,
+                "most routes should leave the slow lane, even though jitter can keep some on it");
         }
 
         // ---- jitter ------------------------------------------------------------------

@@ -72,10 +72,10 @@ namespace Godsbound.Tests
                 _db.Movement, _context);
         }
 
-        [TestCase("ground-P")][TestCase("ground-D")][TestCase("ground-F")]
-        [TestCase("ground-W")][TestCase("ground-R")][TestCase("ground-H")]
-        [TestCase("flying-P")][TestCase("flying-D")][TestCase("flying-F")]
-        [TestCase("flying-W")][TestCase("flying-R")][TestCase("flying-H")]
+        // One case per surviving terrain code. Desert, Road and High Ground were removed on
+        // 2026-09-28, so the exporter stopped tracing routes over them.
+        [TestCase("ground-P")][TestCase("ground-F")][TestCase("ground-W")]
+        [TestCase("flying-P")][TestCase("flying-F")][TestCase("flying-W")]
         [TestCase("flying-mountains")][TestCase("egypt-water")]
         [TestCase("china-own-forest")][TestCase("china-enemy-forest")]
         [TestCase("routed-friendly-wait")][TestCase("under-fire")]

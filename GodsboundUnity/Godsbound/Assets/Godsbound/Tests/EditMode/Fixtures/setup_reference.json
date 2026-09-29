@@ -187,12 +187,12 @@
     {
       "faction": "egypt",
       "rows": [
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD"
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP"
       ]
     },
     {
@@ -234,12 +234,12 @@
       "name": "a fresh Egyptian half",
       "faction": "egypt",
       "rows": [
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD"
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP"
       ],
       "buildings": [
         {
@@ -2190,12 +2190,12 @@
       "name": "a half with rock and water",
       "faction": "egypt",
       "rows": [
-        "WWDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDMMDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDF"
+        "WWPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPMMPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPF"
       ],
       "buildings": [
         {
@@ -6125,13 +6125,13 @@
         {
           "c": 0,
           "r": 0,
-          "type": "D",
+          "type": "P",
           "ok": true
         },
         {
           "c": 0,
           "r": 0,
-          "type": "D",
+          "type": "P",
           "ok": false
         },
         {
@@ -6142,12 +6142,12 @@
         }
       ],
       "rows": [
-        "WDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD"
+        "WPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP"
       ],
       "buildings": [
         {
@@ -6226,12 +6226,12 @@
         }
       ],
       "rows": [
-        "MMMDDDDDD",
-        "MMMDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD"
+        "MMMPPPPPP",
+        "MMMPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP"
       ],
       "buildings": [
         {
@@ -6292,12 +6292,12 @@
         }
       ],
       "rows": [
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "FDDDDDDDD",
-        "DDDDDDDDD"
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "FPPPPPPPP",
+        "PPPPPPPPP"
       ],
       "buildings": [
         {
@@ -6352,12 +6352,12 @@
         }
       ],
       "rows": [
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "FDDDDDDDD"
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "FPPPPPPPP"
       ],
       "buildings": [
         {
@@ -6430,12 +6430,12 @@
         }
       ],
       "rows": [
-        "WDDDDDDDD",
-        "WDDDDDDDD",
-        "WWDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD"
+        "WPPPPPPPP",
+        "WPPPPPPPP",
+        "WWPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP"
       ],
       "buildings": [
         {
@@ -6574,12 +6574,12 @@
         }
       ],
       "rows": [
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "MMMDDDDDD",
-        "DDFDDDDDD"
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "MMMPPPPPP",
+        "PPFPPPPPP"
       ],
       "buildings": [
         {
@@ -7290,12 +7290,12 @@
       "player": "egypt",
       "ai": "china",
       "playerRows": [
-        "MDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDW"
+        "MPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPW"
       ],
       "aiRows": [
         "FPPPPPPPF",
@@ -7313,12 +7313,12 @@
         "PPMMPPPPP",
         "WPPPPWPPF",
         "PPPPPPPPP",
-        "MDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDD",
-        "DDDDDDDDW"
+        "MPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPP",
+        "PPPPPPPPW"
       ],
       "buildings": [
         {
@@ -7356,20 +7356,20 @@
         "PPPPPPPPW"
       ],
       "aiRows": [
-        "FDDDDDDDF",
-        "FDDMDDMWD",
-        "DDDMDDWDW",
-        "FDDDDMDDD",
-        "DDMMDDDDD",
-        "WDDDDWDDF"
+        "FPPPPPPPF",
+        "FPPMPPMWP",
+        "PPPMPPWPW",
+        "FPPPPMPPP",
+        "PPMMPPPPP",
+        "WPPPPWPPF"
       ],
       "absolute": [
-        "FDDDDDDDF",
-        "FDDMDDMWD",
-        "DDDMDDWDW",
-        "FDDDDMDDD",
-        "DDMMDDDDD",
-        "WDDDDWDDF",
+        "FPPPPPPPF",
+        "FPPMPPMWP",
+        "PPPMPPWPW",
+        "FPPPPMPPP",
+        "PPMMPPPPP",
+        "WPPPPWPPF",
         "PPPPPPPPP",
         "MPPPPPPPP",
         "PPPPPPPPP",
@@ -7414,20 +7414,20 @@
         "PPPPPPPPW"
       ],
       "aiRows": [
-        "FDDDDDDDF",
-        "FDDMDDMWD",
-        "DDDMDDWDW",
-        "FDDDDMDDD",
-        "DDMMDDDDD",
-        "WDDDDWDDF"
+        "FPPPPPPPF",
+        "FPPMPPMWP",
+        "PPPMPPWPW",
+        "FPPPPMPPP",
+        "PPMMPPPPP",
+        "WPPPPWPPF"
       ],
       "absolute": [
-        "FDDDDDDDF",
-        "FDDMDDMWD",
-        "DDDMDDWDW",
-        "FDDDDMDDD",
-        "DDMMDDDDD",
-        "WDDDDWDDF",
+        "FPPPPPPPF",
+        "FPPMPPMWP",
+        "PPPMPPWPW",
+        "FPPPPMPPP",
+        "PPMMPPPPP",
+        "WPPPPWPPF",
         "PPPPPPPPP",
         "MPPPPPPPP",
         "PPPPPPPPP",

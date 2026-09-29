@@ -141,7 +141,8 @@ namespace Godsbound.Core.Gods.Powers
             foreach (var h in HexesInRadius(c.At, radius))
             {
                 var t = terrain[h];
-                if ((t != TerrainType.Plains && t != TerrainType.Desert) || StandingBuilding(c, h)) continue;
+                // Plains is the only bare-ground code left (Desert was removed 2026-09-28).
+                if (t != TerrainType.Plains || StandingBuilding(c, h)) continue;
                 terrain.AddOverlay(h, TerrainType.Forest, until, owner: c.Side);
                 n++;
             }

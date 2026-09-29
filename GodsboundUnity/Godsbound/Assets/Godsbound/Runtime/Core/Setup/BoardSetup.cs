@@ -100,7 +100,7 @@ namespace Godsbound.Core.Setup
         }
 
         /// <summary>
-        /// <c>paintTerrain</c>. 'D' erases back to the shipped ground; a paintable code is charged
+        /// <c>paintTerrain</c>. 'P' erases back to the shipped ground; a paintable code is charged
         /// against its budget, refused if it would wall a building in (mountains) or break the Nile
         /// (Egypt's water), and otherwise stands.
         /// </summary>
@@ -111,7 +111,11 @@ namespace Godsbound.Core.Setup
             if (half.At(at) != null) { problem = "a building stands there"; return false; }
             char previous = half.PaintedAt(at);
 
-            if (code == 'D') // the browser's erase, whatever the faction's own filler is
+            // 'P' is the browser's erase instruction, not a brush — the palette only paints F, M
+            // and W, so asking for plain ground can only mean "put this hex back". It was 'D' until
+            // Desert was removed (2026-09-28); 'D' is still honoured so an old caller does not
+            // silently paint instead of erasing.
+            if (code == 'P' || code == 'D')
             {
                 if (previous == '\0') { problem = "nothing was painted there"; return false; }
                 half[at] = BoardHalf.FreshCode(half.Faction, at.C, at.R);

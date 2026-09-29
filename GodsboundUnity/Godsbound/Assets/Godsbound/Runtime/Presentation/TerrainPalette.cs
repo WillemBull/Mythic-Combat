@@ -21,13 +21,10 @@ namespace Godsbound.Presentation
         private static readonly Dictionary<TerrainType, (string fill, string fill2)> Hex =
             new Dictionary<TerrainType, (string, string)>
             {
-                { TerrainType.Plains,     ("#6f8a41", "#647d3a") },
-                { TerrainType.Desert,     ("#c7a15c", "#b99450") },
-                { TerrainType.Forest,     ("#46672f", "#3e5d2b") },
-                { TerrainType.Mountain,   ("#7b766d", "#6e6961") },
-                { TerrainType.Water,      ("#2f7391", "#2a6884") },
-                { TerrainType.Road,       ("#a08a5c", "#957f53") },
-                { TerrainType.HighGround, ("#93905c", "#868353") }
+                { TerrainType.Plains,   ("#6f8a41", "#647d3a") },
+                { TerrainType.Forest,   ("#46672f", "#3e5d2b") },
+                { TerrainType.Mountain, ("#7b766d", "#6e6961") },
+                { TerrainType.Water,    ("#2f7391", "#2a6884") }
             };
 
         /// <summary>The primary fill colour for a terrain type.</summary>

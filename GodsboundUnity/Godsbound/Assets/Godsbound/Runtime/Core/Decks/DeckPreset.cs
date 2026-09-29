@@ -77,6 +77,9 @@ namespace Godsbound.Core.Decks
     {
         public const int HandSize = 4, HeroCount = 2, GodCount = 4, BuildingCount = 3;
         private static readonly string[] BuildingTypes = { "temple", "city", "fortress" };
+        // 'D' stays on the accept list as a MIGRATION, not a terrain: decks saved before
+        // 2026-09-28 carry Desert tiles and Desert always played as Plains, so rejecting one
+        // would throw away a player's saved board. TerrainTable.FromCode('D') returns Plains.
         private static readonly char[] TerrainCodes = { 'P', 'D', 'F', 'M', 'W' };
 
         /// <summary>A faction's shipped deck, straight from the export.</summary>

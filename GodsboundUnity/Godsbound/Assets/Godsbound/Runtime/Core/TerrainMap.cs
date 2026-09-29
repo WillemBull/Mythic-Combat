@@ -38,12 +38,12 @@ namespace Godsbound.Core
             "PPPPPPPPP",
             "PPPPPPPPP",
             "PPPPPPPPP",
-            "DDDDDDDDD",
-            "DDDDDDDDD",
-            "DDDDDDDDD",
-            "DDDDDDDDD",
-            "DDDDDDDDD",
-            "DDDDDDDDD"
+            "PPPPPPPPP",
+            "PPPPPPPPP",
+            "PPPPPPPPP",
+            "PPPPPPPPP",
+            "PPPPPPPPP",
+            "PPPPPPPPP"
         };
 
         private readonly TerrainType[] _cells = new TerrainType[Board.CellCount];

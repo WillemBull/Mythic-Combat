@@ -92,9 +92,10 @@ namespace Godsbound.Core.Setup
                 rows[r] = new char[Board.Cols];
                 for (int c = 0; c < Board.Cols; c++)
                 {
+                    // One filler for both halves since Desert was removed (2026-09-28); a legacy
+                    // 'D' in the shipped map reads as plain ground.
                     char shipped = TerrainMap.Initial[r][c];
-                    char filler = faction == "egypt" ? 'D' : 'P';
-                    rows[r][c] = shipped == 'P' || shipped == 'D' ? filler : shipped;
+                    rows[r][c] = shipped == 'P' || shipped == 'D' ? 'P' : shipped;
                 }
             }
             foreach (var code in Paintable)

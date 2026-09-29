@@ -42,13 +42,20 @@ namespace Godsbound.Core.Setup
 
         /// <summary>
         /// <c>origTerrain</c> for a half-local cell: the shipped map's feature where it has one, and
-        /// the faction's own filler (Egypt's desert, everyone else's plains) where it does not.
+        /// plain ground where it does not.
         /// </summary>
+        /// <remarks>
+        /// The filler used to depend on the faction — Egypt's half was Desert, everyone else's
+        /// Plains. Desert was removed on 2026-09-28 (it was Plains with a different fill colour),
+        /// so there is one filler for the whole board and the faction argument no longer changes
+        /// the answer. It is kept in the signature because every caller has a faction in hand and
+        /// the browser's <c>origTerrain</c> still takes one; a legacy 'D' in the shipped map would
+        /// read as plain ground, same as 'P'.
+        /// </remarks>
         public static char FreshCode(string faction, int c, int localRow)
         {
             char shipped = TerrainMap.Initial[Board.PlayerRow0 + localRow][c];
-            char filler = faction == "egypt" ? 'D' : 'P';
-            return shipped == 'P' || shipped == 'D' ? filler : shipped;
+            return shipped == 'P' || shipped == 'D' ? 'P' : shipped;
         }
 
         public bool Contains(Hex h) => h.C >= 0 && h.C < Cols && h.R >= 0 && h.R < Rows;

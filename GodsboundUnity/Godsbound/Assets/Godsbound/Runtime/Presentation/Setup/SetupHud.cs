@@ -257,11 +257,11 @@ namespace Godsbound.Presentation.Setup
         private void DrawTerrain()
         {
             GUILayout.BeginHorizontal();
-            foreach (var brush in new[] { 'F', 'M', 'W', 'D' })
+            foreach (var brush in new[] { 'F', 'M', 'W', 'P' }) // 'P' is the eraser (was 'D')
             {
                 bool held = Session.Brush == brush;
                 GUI.color = held ? Color.yellow : Color.white;
-                string label = brush == 'D' ? "erase" : $"{brush} {Session.Remaining(brush)}";
+                string label = brush == 'P' ? "erase" : $"{brush} {Session.Remaining(brush)}";
                 if (GUILayout.Button(label, tile, GUILayout.Height(RowHeight))) Session.ChooseBrush(brush);
                 GUI.color = Color.white;
             }

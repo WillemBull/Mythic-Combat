@@ -51,7 +51,8 @@ code+=`
     routes.push({name:name,terrain:code2,faction:faction,side:side,key:key,
       flying:flying,blocked:blocked,underFire:underFire,dt:0.05,samples:samples});
   }
-  for(var terrainCode of ["P","D","F","W","R","H"]){
+  // Desert, Road and High Ground were removed 2026-09-28; P/F/W are the codes a unit can stand on.
+  for(var terrainCode of ["P","F","W"]){
     routeCase("ground-"+terrainCode,terrainCode,"greek",0,false,false,false);
     routeCase("flying-"+terrainCode,terrainCode,"greek",0,true,false,false);
   }

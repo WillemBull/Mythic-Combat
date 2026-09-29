@@ -90,7 +90,7 @@ code+=`
       buildings:bldRows(playerHalf.buildings),painted:[S.painted.F,S.painted.M,S.painted.W]});
   }
   paintRun("a forest, erased and repainted","egypt",[
-    [0,0,"F"],[0,0,"F"],[0,0,"M"],[0,0,"D"],[0,0,"D"],[0,0,"W"]]);
+    [0,0,"F"],[0,0,"F"],[0,0,"M"],[0,0,"P"],[0,0,"P"],[0,0,"W"]]); // "P" is the erase instruction (was "D" before Desert was removed)
   paintRun("the mountain budget","egypt",
     [[0,0],[1,0],[2,0],[0,1],[1,1],[2,1],[3,1]].map(function(h){ return [h[0],h[1],"M"]; }));
   paintRun("painting onto a building","egypt",[[1,4,"F"],[2,4,"M"],[4,4,"W"],[0,4,"F"]]);
